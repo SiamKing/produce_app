@@ -1,0 +1,14 @@
+<div class="col-md-6 col-md-offset-3">
+
+  <h1>New Produce</h1>
+  <%= bootstrap_form_for(@produce) do |f| %>
+    <%= f.text_field :name %>
+    <%= f.text_field :expires_in, label: 'How many days does it last?' %>
+    <%= f.file_field :image %>
+    <%= f.select(:kind, [ 'Fruit', 'Veggie' ], {}, { class: 'select'}) %>
+    <%= f.text_area :content, label: 'What are the benefits?' %>
+
+    <%= f.submit "Create Produce", class: "btn btn-primary" %>
+  <% end %>
+
+</div>

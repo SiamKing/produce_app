@@ -4,5 +4,7 @@ class ProduceController < ApplicationController
     @produce_all = Produce.all
   end
 
-  
+  def new
+    @produce = Produce.new
+  end
 end
