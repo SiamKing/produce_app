@@ -7,6 +7,9 @@
     <% @produce_all.each do |produce| %>
     <div class="col-xs-6 col-lg-4">
       <h2><%= produce.name %></h2>
+      <div class="produce-image">
+        <img src="<%= produce.image %>" alt="<%= produce.name %>" />
+      </div>
     </div>
     <% end %>
   </div>
