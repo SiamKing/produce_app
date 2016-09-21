@@ -1,0 +1,2 @@
+class UserProduce < ApplicationRecord
+end

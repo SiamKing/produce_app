@@ -1,0 +1,2 @@
+class UserProduceController < ApplicationController
+end
