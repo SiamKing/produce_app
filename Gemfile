@@ -28,12 +28,13 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'pry'
+gem 'omniauth-facebook'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem "bootstrap-sass", "~> 3.1.1"
 gem "faker"
 #gem "friendly_id"
-gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped'
+#gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped'
 gem 'autoprefixer-rails'
 
 group :development, :test do
