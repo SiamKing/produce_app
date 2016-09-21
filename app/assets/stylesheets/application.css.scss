@@ -44,3 +44,9 @@ body {
     color: #468847;
     text-align: left;
  }
+
+ .field_with_errors {
+   padding: 2px;
+   background-color: red;
+   display: table;
+ }
