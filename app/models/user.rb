@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
   validates :name, :email, presence: true
   validates :name, :email, uniqueness: true
+  validates_format_of :email, :with => /@/
   validates :email, length: { :minimum => 8 }
   has_many :user_produce
   has_many :produce, through: :user_produce
