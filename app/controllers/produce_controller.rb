@@ -15,6 +15,7 @@ class ProduceController < ApplicationController
     else
       render :new
     end
+  end
 
     def show
       @produce = Produce.find(params[:id])
