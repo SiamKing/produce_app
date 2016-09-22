@@ -1,15 +1,34 @@
-  <div class="jumbotron">
-    <h1>Welcome to the Produce Organizer!</h1>
-    <p>We're sick and tired of throwing out spoiled produce and we're not going to take it anymore!</p>
-  </div>
-  <div class="row">
+<div class="jumbotron">
+  <h1>Welcome to the Produce Organizer!</h1>
+  <p>We're sick and tired of throwing out spoiled produce and we're not going to take it anymore!</p>
+</div>
+<div class="row">
+  <div class="col-xs-6 col-md-6">
+    <h1 align='center'>Fruit</h1>
     <% @produce_all.each do |produce| %>
-    <div class="col-xs-6 col-lg-4">
+    <% if produce.kind == 'fruit' %>
+    <div class="col-md-4">
       <h2><%= produce.name %></h2>
       <div class="produce-image">
         <%= link_to image_tag(produce.image.thumb.url), produce_path(produce) %>
       </div>
     </div>
     <% end %>
+    <% end %>
   </div>
-  <%= link_to "Don't see what you want?", new_produce_path %>
+  <div class="col-md-6">
+    <h1 align='center'>Veggies</h1>
+    <% @produce_all.each do |produce| %>
+    <% if produce.kind == 'veggie' %>
+    <div class="col-md-4">
+      <h2><%= produce.name %></h2>
+      <div class="produce-image">
+        <%= link_to image_tag(produce.image.thumb.url), produce_path(produce) %>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+
+</div>
+<%= link_to "Don't see what you want?", new_produce_path %>
