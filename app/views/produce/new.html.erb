@@ -6,7 +6,7 @@
     <%= f.text_field :expires_in, label: 'How many days does it last?' %>
     <%= f.file_field :image %>
     <%= f.select(:kind, [ 'Fruit', 'Veggie' ], {}, { class: 'select'}) %>
-    <%= f.text_area :content, label: 'What are the benefits?' %>
+    <%= f.text_area :content, label: 'Tell us about this item (benefits and such)' %>
 
     <%= f.submit "Create Produce", class: "btn btn-primary" %>
   <% end %>

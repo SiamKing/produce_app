@@ -1,4 +1,3 @@
-<div class="col-xs-12 col-sm-9">
   <div class="jumbotron">
     <h1>Welcome to the Produce Organizer!</h1>
     <p>We're sick and tired of throwing out spoiled produce and we're not going to take it anymore!</p>
@@ -8,10 +7,8 @@
     <div class="col-xs-6 col-lg-4">
       <h2><%= produce.name %></h2>
       <div class="produce-image">
-        <img src="<%= produce.image %>" alt="<%= produce.name %>" />
+        <%= image_tag produce.image.thumb.url %>
       </div>
     </div>
     <% end %>
   </div>
-
-</div>
