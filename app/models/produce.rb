@@ -11,4 +11,6 @@ class Produce < ApplicationRecord
   def self.veggie
     self.where(kind: 'veggie')
   end
+
+  
 end
