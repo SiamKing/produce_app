@@ -2,7 +2,8 @@
   User.create(
     name: Faker::Name.first_name,
     email: Faker::Internet.email,
-    password: Faker::Internet.password
+    password: Faker::Internet.password,
+    image: Faker::Avatar.image
   )
 end
 

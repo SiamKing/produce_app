@@ -1,14 +1,12 @@
 class UsersController < ApplicationController
-  before_action :user_signed_in?, only: [:index, :show]
 
   def show
-    if !user_signed_in?
-      redirect_to new_user_registration_path
-    end
+    redirect_to produce_index_path unless user_signed_in?
   end
 
   def index
+    redirect_to produce_index_path unless user_signed_in?
     @users = User.all
   end
-  
+
 end

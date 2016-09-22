@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#index'
+  root 'users#show'
   resources :user_produce
   resources :produce
   devise_for :users, :controllers => { registrations: 'registrations' }
