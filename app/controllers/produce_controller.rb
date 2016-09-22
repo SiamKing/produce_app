@@ -17,15 +17,13 @@ class ProduceController < ApplicationController
     end
   end
 
-    def show
-      @produce = Produce.find(params[:id])
-    end
+  def show
+    @produce = Produce.find(params[:id])
   end
-
 
   private
 
-  def private_params
+  def produce_params
     params.require(:produce).permit(:name, :image, :content, :expires_in, :content)
   end
 end

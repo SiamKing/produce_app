@@ -7,12 +7,14 @@
 end
 
 fruit = ["Apples", "Bananas", "Oranges", "Strawberries", "Blueberries", "Pears", "Peaches", "Pineapple", "Avocados", "Grapes"]
-fruit_image = ['https://1.bp.blogspot.com/-3zgKOs64JNc/V68jCHCWBfI/AAAAAAAACyU/pYGy5j-onZAwr2bm1LZ1exExgasXVzHqwCLcB/s1600/033015-health-apples.png',
-               'http://saltmarshrunning.com/wp-content/uploads/2014/09/bananasf.jpg', 'http://www.sealdsweet.com/img/oranges.jpg',
-               'http://www.puraforceremedies.com/wp-content/uploads/2016/05/Strawberries.jpg', 'http://www.medicalnewstoday.com/content/images/articles/287/287710/blueberries.jpg',
-               'http://weknowyourdreams.com/image.php?pic=/images/pear/pear-02.jpg', 'https://www.organicfacts.net/wp-content/uploads/peach.jpg',
-               'http://freenology.com/images/71442946288pineapple.jpg', 'http://www.eatsxm.com/uploads/1/3/8/6/13862036/3554628_orig.jpg',
-               'http://cdn1.medicalnewstoday.com/content/images/articles/271156-grapes.jpg']
+fruit_image = ['app/assets/images/apples.png', 'app/assets/images/bananas.jpg', 'app/assets/images/oranges.jpg', 'app/assets/images/Strawberries.jpg', 'app/assets/images/blueberries.jpg',
+               'app/assets/images/pear.jpg', 'app/assets/images/peach.jpg', 'app/assets/images/pineapple.jpg', 'app/assets/images/avocado.jpg', 'app/assets/images/grapes.jpg']
+# fruit_image = ['https://1.bp.blogspot.com/-3zgKOs64JNc/V68jCHCWBfI/AAAAAAAACyU/pYGy5j-onZAwr2bm1LZ1exExgasXVzHqwCLcB/s1600/033015-health-apples.png',
+#                'http://saltmarshrunning.com/wp-content/uploads/2014/09/bananasf.jpg', 'http://www.sealdsweet.com/img/oranges.jpg',
+#                'http://www.puraforceremedies.com/wp-content/uploads/2016/05/Strawberries.jpg', 'http://www.medicalnewstoday.com/content/images/articles/287/287710/blueberries.jpg',
+#                'http://weknowyourdreams.com/image.php?pic=/images/pear/pear-02.jpg', 'https://www.organicfacts.net/wp-content/uploads/peach.jpg',
+#                'http://freenology.com/images/71442946288pineapple.jpg', 'http://www.eatsxm.com/uploads/1/3/8/6/13862036/3554628_orig.jpg',
+#                'http://cdn1.medicalnewstoday.com/content/images/articles/271156-grapes.jpg']
 
 fruit_content = ['Apples are extremely rich in important antioxidants, flavanoids, and dietary fiber. The phytonutrients and antioxidants in apples may help reduce the risk of developing cancer, hypertension, diabetes, and heart disease. This article provides a nutritional profile of the fruit and its possible health benefits',
                  'Bananas are a great dietary source of potassium. One medium-sized banana (118 grams) contains 9% of the RDI. A potassium-rich diet can help lower blood pressure, and people who eat plenty of potassium have up to a 27% lower risk of heart disease (22, 23, 24, 25)',
@@ -29,7 +31,7 @@ counter = 0
   Produce.create(
     name: fruit[counter],
     expires_in: Faker::Number.between(5, 14),
-    image: fruit_image[counter],
+    image: File.open(File.join(Rails.root, fruit_image[counter])),
     kind: "fruit",
     content: fruit_content[counter]
   )
@@ -37,11 +39,14 @@ counter = 0
 end
 
 veg = ["Lettuce", "Broccoli", "Kale", "Onion", "Potato", "Cucumber", "Carrots", "Celery", "Bell Peppers", "Cabbage"]
-veg_image = ['http://www.continentalenterprisesinc.com/products/vegetables/lettuce_1.png', 'http://www.medicalnewstoday.com/content/images/articles/266/266765/two-heads-of-broccoli.jpg',
-             'http://www.discoverkale.co.uk/wp-content/uploads/2014/12/kale_title.jpg', 'http://www.petpoisonhelpline.com/wp-content/uploads/2011/10/Onion.jpg',
-             'http://cdn1.medicalnewstoday.com/content/images/articles/280/280579/potatoes.jpg', 'http://www.livescience.com/images/i/000/076/219/original/cucumbers.jpg?interpolation=lanczos-none&downsize=*:1000',
-             'https://woolworthsbabyandtoddlerclub.com.au/images/imageLibrary/will-carrots-really-help-my-babys-eyesight-454.jpg', 'https://draxe.com/wp-content/uploads/2015/04/bigstock-Fresh-green-celery-isolated-on-52080031.jpg',
-             'http://www.finecooking.com/assets/uploads/posts/5086/ING-bell-pepper_sql.jpg', 'http://www.medicalnewstoday.com/content/images/articles/284/284823/cabbage.jpg']
+# veg_image = ['http://www.continentalenterprisesinc.com/products/vegetables/lettuce_1.png', 'http://www.medicalnewstoday.com/content/images/articles/266/266765/two-heads-of-broccoli.jpg',
+#              'http://www.discoverkale.co.uk/wp-content/uploads/2014/12/kale_title.jpg', 'http://www.petpoisonhelpline.com/wp-content/uploads/2011/10/Onion.jpg',
+#              'http://cdn1.medicalnewstoday.com/content/images/articles/280/280579/potatoes.jpg', 'http://www.livescience.com/images/i/000/076/219/original/cucumbers.jpg?interpolation=lanczos-none&downsize=*:1000',
+#              'https://woolworthsbabyandtoddlerclub.com.au/images/imageLibrary/will-carrots-really-help-my-babys-eyesight-454.jpg', 'https://draxe.com/wp-content/uploads/2015/04/bigstock-Fresh-green-celery-isolated-on-52080031.jpg',
+#              'http://www.finecooking.com/assets/uploads/posts/5086/ING-bell-pepper_sql.jpg', 'http://www.medicalnewstoday.com/content/images/articles/284/284823/cabbage.jpg']
+
+veg_image = ['app/assets/images/lettuce.png', 'app/assets/images/broccoli.jpg', 'app/assets/images/kale.jpg', 'app/assets/images/Onion.jpg', 'app/assets/images/potatoes.jpg', 'app/assets/images/cucumbers.jpg',
+             'app/assets/images/carrots.jpg', 'app/assets/images/celery.jpg', 'app/assets/images/peppers.jpg', 'app/assets/images/cabbage.jpg']
 
 veg_content = ['Lettuce contains moisture, energy, protein, fat, carbohydrates, dietary fiber, and sugars. The minerals and vitamins found in lettuce include calcium, iron, magnesium, phosphorous, potassium, sodium, zinc along with vitamins like thiamin, riboflavin, niacin, folate, vitamin B-6, C, A, E, and vitamin K.',
                'Broccoli is an excellent source of vitamin K, vitamin C, chromium and folate. It is a very good source of dietary fiber, pantothenic acid, vitamin B6, vitamin E, manganese, phosphorus, choline, vitamin B1, vitamin A (in the form of carotenoids), potassium and copper.',
@@ -58,7 +63,7 @@ counter = 0
   Produce.create(
     name: veg[counter],
     expires_in: Faker::Number.between(5, 14),
-    image: veg_image[counter],
+    image: File.open(File.join(Rails.root, veg_image[counter])),
     kind: "veggie",
     content: veg_content[counter]
   )
