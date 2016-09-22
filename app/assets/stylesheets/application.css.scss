@@ -1,5 +1,7 @@
 @import "bootstrap";
 
+
+
 /* Some Style from the Bootstrap Default Theme */
 body {
   padding-top: 70px;
@@ -55,9 +57,12 @@ aside {
 
 /* Produce index */
 
-.produce-image {
-  max-height: 100px;
-  max-width: 100px;
+.img {
+  width: 100px;
+  height: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .jumbotron {

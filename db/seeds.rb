@@ -38,14 +38,14 @@ counter = 0
   counter += 1
 end
 
-veg = ["Lettuce", "Broccoli", "Kale", "Onion", "Potato", "Cucumber", "Carrots", "Celery", "Bell Peppers", "Cabbage"]
+veg = ["Lettuce", "Broccoli", "Kale", "Onion", "Potato", "Cucumber", "Carrots", "Celery", "Peppers", "Cabbage"]
 # veg_image = ['http://www.continentalenterprisesinc.com/products/vegetables/lettuce_1.png', 'http://www.medicalnewstoday.com/content/images/articles/266/266765/two-heads-of-broccoli.jpg',
 #              'http://www.discoverkale.co.uk/wp-content/uploads/2014/12/kale_title.jpg', 'http://www.petpoisonhelpline.com/wp-content/uploads/2011/10/Onion.jpg',
 #              'http://cdn1.medicalnewstoday.com/content/images/articles/280/280579/potatoes.jpg', 'http://www.livescience.com/images/i/000/076/219/original/cucumbers.jpg?interpolation=lanczos-none&downsize=*:1000',
 #              'https://woolworthsbabyandtoddlerclub.com.au/images/imageLibrary/will-carrots-really-help-my-babys-eyesight-454.jpg', 'https://draxe.com/wp-content/uploads/2015/04/bigstock-Fresh-green-celery-isolated-on-52080031.jpg',
 #              'http://www.finecooking.com/assets/uploads/posts/5086/ING-bell-pepper_sql.jpg', 'http://www.medicalnewstoday.com/content/images/articles/284/284823/cabbage.jpg']
 
-veg_image = ['app/assets/images/lettuce.png', 'app/assets/images/broccoli.jpg', 'app/assets/images/kale.jpg', 'app/assets/images/Onion.jpg', 'app/assets/images/potatoes.jpg', 'app/assets/images/cucumbers.jpg',
+veg_image = ['app/assets/images/lettuce.jpg', 'app/assets/images/broccoli.jpg', 'app/assets/images/Kale.jpg', 'app/assets/images/Onion.jpg', 'app/assets/images/potatoes.jpg', 'app/assets/images/cucumbers.jpg',
              'app/assets/images/carrots.jpg', 'app/assets/images/celery.jpg', 'app/assets/images/peppers.jpg', 'app/assets/images/cabbage.jpg']
 
 veg_content = ['Lettuce contains moisture, energy, protein, fat, carbohydrates, dietary fiber, and sugars. The minerals and vitamins found in lettuce include calcium, iron, magnesium, phosphorous, potassium, sodium, zinc along with vitamins like thiamin, riboflavin, niacin, folate, vitamin B-6, C, A, E, and vitamin K.',
