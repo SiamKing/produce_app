@@ -1,0 +1,9 @@
+<%= bootstrap_form_for(@produce) do |f| %>
+  <%= f.text_field :name %>
+  <%= f.text_field :expires_in, label: 'How many days does it last?' %>
+  <%= f.select(:kind, [ 'fruit', 'veggie' ], {}, { class: 'select'}) %>
+  <%= f.text_area :content, label: 'Tell us about this item (benefits and such)' %>
+  <%= f.file_field :image %>
+
+  <%= f.submit @submit, class: "btn btn-primary" %>
+<% end %>

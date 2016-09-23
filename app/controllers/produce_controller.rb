@@ -7,6 +7,7 @@ class ProduceController < ApplicationController
 
   def new
     @produce = Produce.new
+    @submit = "Create Produce"
   end
 
   def create
@@ -21,6 +22,21 @@ class ProduceController < ApplicationController
 
   def show
     @produce = Produce.find(params[:id])
+  end
+
+  def edit
+    @produce = Produce.find(params[:id])
+    @submit = "Edit Produce"
+  end
+
+  def update
+    @produce = Produce.new(params[:id])
+    if @produce.update_attributes(produce_params)
+      @produce.save
+      redirect_to @produce
+    else
+      render :edit
+    end
   end
 
   private

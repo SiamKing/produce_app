@@ -5,9 +5,12 @@
         <h1 align="center">
           <%= @produce.name %></h1>
           <%= image_tag @produce.image.large.url %>
-          <h4><%= @produce.content %></h4>
+          <h4><%= @produce.content %>
+            Shelf life is usually about <%= @produce.expires_in %> days.</h4>
           <br></br>
-          <%= link_to "Edit", edit_produce_path %>
+          <div class="btn">
+            <%= link_to "Edit", edit_produce_path %>
+          </div>
         </div>
       </div>
     </div>

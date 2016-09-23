@@ -7,11 +7,6 @@ class UserProduce < ApplicationRecord
     self.produce.expires_in - ((Time.now.to_i - self.created_at.to_i) / 86400)
   end
 
-  # def self.user_fruit
-  #   self.fruit_ids.map do |f|
-  #     Produce.find(f.produce_id)
-  #   end
-  # end
 
   def self.user_fruit
     self.select do |user_pro|
