@@ -6,13 +6,34 @@
       </h1>
 
 </div>
-<div class="row">
-  <div class="col-xs-12">
-    <% @produce.each do |p| %>
-    <% if p.produce.kind == 'fruit' %>
-      <%= p.produce.name %>
-      <%= p.shelf_life %> days left to eat
-      <% end %>
-      <% end %>
+<div class="row ">
+  <div class="col-xs-6 col-md-6">
+    <h1 align='center'>Fruit</h1>
+    <% @fruit.each do |prod| %>
+    <div clas="row ">
+    <div class="col-md-6 text-center">
+      <h2 align='center'><%= prod.produce.name %></h2>
+      <div class="img">
+        <%= link_to image_tag(prod.produce.image.thumb.url), produce_path(prod.produce) %>
+      </div>
+        <br></br>
+      <%= button_to "I ate it!", eaten_path(prod) %>
+    </div>
   </div>
-</div>
+    <% end %>
+  </div>
+  <div class="col-xs-6 col-md-6">
+    <h1 align='center'>Veggies</h1>
+    <% @veggies.each do |veg| %>
+    <div clas="row">
+    <div class="col-md-6 text-center">
+      <h2 align='center'><%= veg.produce.name %></h2>
+      <div class="img text-center">
+        <%= link_to image_tag(veg.produce.image.thumb.url), produce_path(veg.produce) %>
+      </div>
+      <br></br>
+      <%= button_to "I ate it!", eaten_path(veg), class: 'btn btn-primary' %>
+    </div>
+  </div>
+    <% end %>
+  </div>

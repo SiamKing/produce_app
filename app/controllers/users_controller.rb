@@ -2,14 +2,22 @@ class UsersController < ApplicationController
 
   def show
     redirect_to produce_index_path unless user_signed_in?
-    current_user
-    @fruit = current_user.user_produce.user_fruit
-    @veggies = current_user.user_produce.user_veggies
+    produce = current_user.current_produce
+    @fruit = produce.user_fruit
+    @veggies = produce.user_veggies
   end
 
   def index
     redirect_to produce_index_path unless user_signed_in?
     @users = User.all
+  end
+
+  def eaten
+    @user_produce = UserProduce.find(params[:format])
+    @user_produce.update_attributes(eaten?: true)
+    @user_produce.save
+    flash[:notice] = "Good for you! You ate your #{@user_produce.produce.name}!"
+    redirect_to user_path(current_user)
   end
 
 end

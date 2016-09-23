@@ -9,4 +9,8 @@ class User < ApplicationRecord
   validates :email, length: { :minimum => 8 }
   has_many :user_produce
   has_many :produce, through: :user_produce
+
+  def current_produce
+    self.user_produce.where(eaten?: false)
+  end
 end
