@@ -1,17 +1,18 @@
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
+
       <h1>
         <%= gravatar_for current_user %>
         Here's what's in <%= current_user.name %>'s Fridge
       </h1>
-    </section>
-  </aside>
+
 </div>
 <div class="row">
   <div class="col-xs-12">
-    <% current_user.produce.each do |p| %>
-      <%= p.name %>
+    <% @produce.each do |p| %>
+    <% if p.produce.kind == 'fruit' %>
+      <%= p.produce.name %>
+      <%= p.shelf_life %> days left to eat
+      <% end %>
       <% end %>
   </div>
 </div>
