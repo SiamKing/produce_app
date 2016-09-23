@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
 
   def show
-    redirect_to produce_index_path unless user_signed_in?
-    produce = current_user.current_produce
-    @fruit = produce.user_fruit
-    @veggies = produce.user_veggies
+    if user_signed_in?
+      produce = current_user.current_produce
+      @fruit = produce.user_fruit
+      @veggies = produce.user_veggies
+    else
+      redirect_to produce_index_path
+    end
   end
 
   def index

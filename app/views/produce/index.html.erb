@@ -1,6 +1,6 @@
 <div class="jumbotron">
-  <h1>Welcome to the Produce Organizer!</h1>
-  <p>We're sick and tired of throwing out spoiled produce and we're not going to take it anymore!</p>
+  <h1 align='center'>Welcome to the Produce Organizer!</h1>
+  <p align='center'>We're sick and tired of throwing out spoiled produce and we're not going to take it anymore!</p>
 </div>
 <div class="row ">
   <div class="col-xs-6 col-md-6">
@@ -28,7 +28,7 @@
         <%= link_to image_tag(produce.image.thumb.url), produce_path(produce) %>
       </div>
       <br></br>
-      <%= button_to "Add to Fridge", user_produce_index_path(produce), class: 'btn btn-outline-primary' if user_signed_in? %>
+      <%= button_to "Add to Fridge", user_produce_index_path(produce) if user_signed_in? %>
     </div>
   </div>
     <% end %>

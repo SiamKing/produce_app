@@ -12,6 +12,7 @@ class ProduceController < ApplicationController
   def create
     @produce = Produce.new(produce_params)
     if @produce.save
+      flash[:notice] = "You are quite the #{@produce.name} lover!"
       redirect_to @produce
     else
       render :new
