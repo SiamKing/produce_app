@@ -44,6 +44,8 @@ GEM
     bcrypt (3.1.11)
     bootstrap-sass (3.1.1.1)
       sass (~> 3.2)
+    bootstrap-social-rails (4.12.0)
+      railties (>= 3.1)
     bootstrap_form (2.5.0)
     builder (3.2.2)
     byebug (9.0.5)
@@ -76,6 +78,8 @@ GEM
     faraday (0.9.2)
       multipart-post (>= 1.2, < 3)
     ffi (1.9.14)
+    font-awesome-rails (4.6.3.1)
+      railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashie (3.4.4)
@@ -212,12 +216,14 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   bootstrap-sass (~> 3.1.1)
+  bootstrap-social-rails
   bootstrap_form
   byebug
   carrierwave
   coffee-rails (~> 4.2)
   devise
   faker
+  font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

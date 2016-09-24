@@ -6,7 +6,7 @@ class UsersController < ApplicationController
       @fruit = produce.user_fruit
       @veggies = produce.user_veggies
     else
-      redirect_to produce_index_path
+      redirect_to welcome_path
     end
   end
 
