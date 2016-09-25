@@ -1,0 +1,2 @@
+class JuicesController < ApplicationController
+end
