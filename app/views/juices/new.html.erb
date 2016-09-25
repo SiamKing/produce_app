@@ -3,9 +3,9 @@
   <h1>New Juice</h1>
   <%= bootstrap_form_for @juice do |f| %>
     <%= f.text_field :name %>
-    <%= f.collection_check_boxes :produce_ids, Produce.all, :id, :name %>
-    <%= f.fields_for :produce_juices, juice.produce.build do |produce_fields| %>
-    <%= produce_fields.text_field :quantity %>
+    <%= f.collection_check_boxes :produce, Produce.all, :id, :name %>
+    <%= f.fields_for :juice_produce do |juice_produce_fields| %>
+    <%= juice_produce_fields.text_field :quantity %>
     <% end %>
     <%= f.submit %>
   <% end %>
