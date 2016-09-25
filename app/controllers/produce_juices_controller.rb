@@ -1,2 +1,0 @@
-class ProduceJuicesController < ApplicationController
-end

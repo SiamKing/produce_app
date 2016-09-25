@@ -2,10 +2,10 @@
 
 one:
   quantity: 1
-  produce_id: one
-  juice_id: one
+  produce: one
+  juice: one
 
 two:
   quantity: 1
-  produce_id: two
-  juice_id: two
+  produce: two
+  juice: two

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :produce_juices
+  resources :juice_produce
   resources :juices
   root 'users#show'
   resources :user_produce

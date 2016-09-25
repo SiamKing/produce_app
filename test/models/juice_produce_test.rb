@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ProduceJuiceTest < ActiveSupport::TestCase
+class JuiceProduceTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

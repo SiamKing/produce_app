@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925203114) do
+ActiveRecord::Schema.define(version: 20160925220518) do
+
+  create_table "juice_produce", force: :cascade do |t|
+    t.integer  "quantity"
+    t.integer  "produce_id"
+    t.integer  "juice_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["juice_id"], name: "index_juice_produce_on_juice_id"
+    t.index ["produce_id"], name: "index_juice_produce_on_produce_id"
+  end
 
   create_table "juices", force: :cascade do |t|
     t.string   "name"
@@ -26,16 +36,6 @@ ActiveRecord::Schema.define(version: 20160925203114) do
     t.datetime "updated_at", null: false
     t.integer  "expires_in"
     t.text     "content"
-  end
-
-  create_table "produce_juices", force: :cascade do |t|
-    t.integer  "quantity"
-    t.integer  "produce_id_id"
-    t.integer  "juice_id_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["juice_id_id"], name: "index_produce_juices_on_juice_id_id"
-    t.index ["produce_id_id"], name: "index_produce_juices_on_produce_id_id"
   end
 
   create_table "user_produce", force: :cascade do |t|
