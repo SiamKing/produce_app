@@ -4,4 +4,5 @@ class JuiceProduce < ApplicationRecord
   accepts_nested_attributes_for :juice
   accepts_nested_attributes_for :produce
   validates :quantity, presence: true
+  delegate :name, to: :juice, prefix: true
 end
