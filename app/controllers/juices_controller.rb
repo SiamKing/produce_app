@@ -9,4 +9,10 @@ class JuicesController < ApplicationController
   def create
     binding.pry
   end
+
+  private
+
+  def juice_params
+    params.require(:juice).permit(:name, :produce_attributes)
+  end
 end

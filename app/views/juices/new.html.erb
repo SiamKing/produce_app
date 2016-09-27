@@ -6,31 +6,30 @@
     <label><h3 align="center">Ingredients:</h2></label>
     <div class="row">
       <% 4.times do %>
-        <div class="col-xs-3">
-          <%= f.fields_for :produce, @juice.produce.build do |prod_form| %>
-            <%= prod_form.text_field :name %>
-              <%= f.fields_for :juice_produce, @juice.juice_produce.build do |jp_form| %>
-                <%= jp_form.number_field :quantity %>
-              <% end %>
-          <% end %>
-        </div>
-      <% end %>
-      <% @produce.each do |prod| %>
-      <div class="col-md-4">
-        <div class="row">
-          <div class="col-xs-12">
-            <label for="produce_id<%= prod.id %>"> <%= prod.name %></label>
-            <input type="checkbox" name="juice[produce_ids][]" value="<%= prod.id %>" id="prod">
-          </div>
-          <%= f.fields_for :juice_produce, @juice.juice_produce.build do |jp_builder| %>
-            <div class="col-xs-8">
-              <%= jp_builder.number_field :quantity %>
-            </div>
-          <% end %>
-        </div>
+      <div class="col-xs-3">
+        <%= f.fields_for :produce, @juice.produce.build do |prod_builder| %>
+          <%= prod_builder.select 'name', options_from_collection_for_select(@produce, 'id', 'name'), include_blank: true %>
+          <%= prod_builder.fields_for :juice_produce, @juice.juice_produce.build do |jp_builder| %>
+            <%= jp_builder.number_field :quantity %>
+        <% end %>
+        <% end %>
       </div>
       <% end %>
     </div>
+    <div class="row">
+      <h4 align="center">Can't find your ingredient? Add it here:</h4>
+      <% 4.times do %>
+        <div class="col-xs-3">
+          <%= f.fields_for :produce, @juice.produce.build do |prod_form| %>
+            <%= prod_form.text_field :name %>
+            <%= prod_form.fields_for :juice_produce, @juice.juice_produce.build do |jp_form| %>
+              <%= jp_form.number_field :quantity %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
     <%= f.submit %>
+    </div>
   <% end %>
 </div>
