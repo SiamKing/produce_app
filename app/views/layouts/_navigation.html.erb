@@ -5,5 +5,6 @@
 <% else %>
   <li><%= link_to "Signed in as #{current_user.name}", user_path(current_user) %></li>
   <li><%= link_to "Produce", produce_index_path %></li>
+  <li><%= link_to "Juices", juices_path %></li>
   <li><a data-method="delete" href="/users/sign_out" rel="nofollow">Sign Out</a></li>
 <% end %>
