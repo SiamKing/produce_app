@@ -1,4 +1,4 @@
-<%= render partial: "application/jumbotron" %>
+<%= render partial: "application/jumbotron", locals: {jumbo: 'jumbotron-produce', header: "Fresh Produce"} %>
 <div class="row ">
   <div class="col-xs-6 col-md-6">
     <h1 align='center'>Fruit</h1>
@@ -9,4 +9,4 @@
     <%= render partial: "produce/produce", locals: {produce: @veggies} %>
   </div>
 </div><br>
-<h3><%= link_to "Don't see what you want?", new_produce_path if user_signed_in?%></h3>
+<h3 align="center"><%= link_to "Don't see what you want?", new_produce_path if user_signed_in?%></h3>

@@ -1,4 +1,4 @@
-<%= render partial: "application/jumbotron" %>
+<%= render partial: "application/jumbotron", locals: {jumbo: 'jumbotron-produce', header: "Welcome to Produce Organizer"} %>
 <div class="row">
   <div class="container container-table">
     <div class="row vertical-center-row">
@@ -9,7 +9,6 @@
           <a class="btn btn-block btn-social"  href="<%= user_facebook_omniauth_authorize_path %>">
               <span class="fa fa-facebook"></span>Sign in with Facebook
           </a>
-
         </h1>
       </div>
     </div>

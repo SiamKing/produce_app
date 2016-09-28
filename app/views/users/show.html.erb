@@ -1,47 +1,13 @@
+<%= render partial: "application/jumbotron", locals: {jumbo: 'jumbotron-user', header: "Here's what's in #{current_user.name}'s fridge"} %>
 <div class="row">
-  <div class="container container-table">
-    <div class="row vertical-center-row">
-      <div class="text-center col-md-4 col-md-offset-4">
-        <h1 align="center">
-          <%= gravatar_for current_user %>
-          Here's what's in <%= current_user.name %>'s Fridge
-        </h1>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row ">
   <div class="col-xs-6 col-md-6">
     <h1 align='center'>Fruit</h1>
-    <% @fruit.each do |prod| %>
-    <div clas="row ">
-    <div class="col-md-6 text-center">
-      <h2 align='center'><%= prod.produce.name %></h2>
-      <div class="img">
-        <%= link_to image_tag(prod.produce.image.thumb.url), produce_path(prod.produce) %>
-      </div><br>
-      <%= "Expires in #{prod.shelf_life} days" %>
-        <br></br>
-      <%= button_to "I ate it!", eaten_path(prod), class: 'btn btn-outline-primary btn-sm' %>
-    </div>
-  </div>
-    <% end %>
+    <%= render partial: "users/user_produce", locals: {produce: @fruit} %>
   </div>
   <div class="col-xs-6 col-md-6">
     <h1 align='center'>Veggies</h1>
-    <% @veggies.each do |veg| %>
-    <div clas="row">
-    <div class="col-md-6 text-center">
-      <h2 align='center'><%= veg.produce.name %></h2>
-      <div class="img text-center">
-        <%= link_to image_tag(veg.produce.image.thumb.url), produce_path(veg.produce) %>
-      </div><br>
-      <%= "Expires in #{veg.shelf_life} days" %>
-      <br></br>
-      <%= button_to "I ate it!", eaten_path(veg), class: 'btn btn-outline-primary btn-sm' %>
-    </div>
+    <%= render partial: "users/user_produce", locals: {produce: @veggies} %>
   </div>
-    <% end %>
-  </div>
-  <br></br></br>
-    <h3><%= link_to "Add more produce", produce_index_path, class: 'btn btn-primary ' %><h3>
+</div>
+<br></br></br>
+<h3 align="center"><%= link_to "Add more produce", produce_index_path, class: 'btn btn-outline-primary ' %><h3>
