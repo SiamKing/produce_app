@@ -30,9 +30,9 @@ class ProduceController < ApplicationController
   end
 
   def update
-    @produce = Produce.new(params[:id])
-    if @produce.update_attributes(produce_params)
-      @produce.save
+    @produce = Produce.find(params[:id])
+    @produce.update_attributes(produce_params)
+    if @produce.save
       redirect_to @produce
     else
       render :edit
@@ -42,6 +42,6 @@ class ProduceController < ApplicationController
   private
 
   def produce_params
-    params.require(:produce).permit(:name, :image, :content, :expires_in, :content)
+    params.require(:produce).permit(:name, :image, :kind, :content, :expires_in, :content)
   end
 end
