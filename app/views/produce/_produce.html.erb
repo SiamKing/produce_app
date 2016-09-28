@@ -1,0 +1,12 @@
+<% produce.each do |produce| %>
+<div clas="row">
+  <div class="col-md-6 text-center">
+    <h2 align='center'><%= produce.name %></h2>
+    <div class="img text-center">
+      <%= link_to image_tag(produce.image.thumb.url), produce_path(produce) %>
+    </div>
+    <br></br>
+    <%= button_to "Add to Fridge", user_produce_index_path(produce) if user_signed_in? %>
+  </div>
+</div>
+<% end %>

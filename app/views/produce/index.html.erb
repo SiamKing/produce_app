@@ -12,34 +12,11 @@
 <div class="row ">
   <div class="col-xs-6 col-md-6">
     <h1 align='center'>Fruit</h1>
-    <% @fruit.each do |produce| %>
-    <div clas="row ">
-    <div class="col-md-6 text-center">
-      <h2 align='center'><%= produce.name %></h2>
-      <div class="img">
-        <%= link_to image_tag(produce.image.thumb.url), produce_path(produce) %>
-      </div>
-        <br></br>
-      <%= button_to "Add to Fridge", user_produce_index_path(produce) if user_signed_in? %>
-    </div>
-  </div>
-    <% end %>
+    <%= render partial: "produce/produce", locals: {produce: @fruit} %>
   </div>
   <div class="col-xs-6 col-md-6">
     <h1 align='center'>Veggies</h1>
-    <% @veggies.each do |produce| %>
-    <div clas="row">
-    <div class="col-md-6 text-center">
-      <h2 align='center'><%= produce.name %></h2>
-      <div class="img text-center">
-        <%= link_to image_tag(produce.image.thumb.url), produce_path(produce) %>
-      </div>
-      <br></br>
-      <%= button_to "Add to Fridge", user_produce_index_path(produce) if user_signed_in? %>
-    </div>
+    <%= render partial: "produce/produce", locals: {produce: @veggies} %>
   </div>
-    <% end %>
-  </div>
-
 </div><br>
 <h3><%= link_to "Don't see what you want?", new_produce_path if user_signed_in?%></h3>
