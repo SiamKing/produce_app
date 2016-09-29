@@ -1,8 +1,7 @@
 class Juice < ApplicationRecord
   has_many :juice_produce, dependent: :destroy
   has_many :produce, through: :juice_produce
-  accepts_nested_attributes_for :juice_produce, reject_if: proc { |attributes| attributes[:quantity].blank? }
-  accepts_nested_attributes_for :produce, reject_if: proc { |attributes| attributes[:name].blank? }
+  accepts_nested_attributes_for :produce, :juice_produce, reject_if: proc { |attributes| attributes[:quantity].blank? }, allow_destroy: true
   validates :name, presence: true
   validates :name, uniqueness: true
 
@@ -14,16 +13,21 @@ class Juice < ApplicationRecord
         else
           prod = Produce.find_or_create_by(name: produce_attribute[:name])
         end
-        prod.juice_produce.create(juice_id: self.id, quantity: produce_attribute[:juice_produce_attributes].values.first[:quantity])
+        jp = self.juice_produce.find_or_create_by(produce_id: prod.id, quantity: produce_attribute[:juice_produce_attributes].values.first[:quantity])
+        jp.save
       end
     end
   end
 
   def produce_attributes?(produce_attributes)
-    pa = []
+    pa = ""
     produce_attributes.values.each do |produce_attribute|
       pa << produce_attribute[:name]
     end
-    pa.all?
+    !pa.empty?
+  end
+
+  def update_attributes?(produce_attributes)
+
   end
 end

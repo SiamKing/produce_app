@@ -15,10 +15,11 @@
     <% @produce.each do |prod| %>
       <div class="col-xs-4">
       <h3 align="center"><%= prod.juice_produce.first.quantity %> <%= prod.name %></h3>
-      <div class="img">
+      <div class="produce-index-img text-center">
         <%= link_to image_tag(prod.image.thumb.url), produce_path(prod) %>
       </div>
     </div>
     <% end %>
   </div>
 </div>
+<h3 align="center"><%= link_to "Edit Juice", edit_juice_path(@juice) %></h3>
