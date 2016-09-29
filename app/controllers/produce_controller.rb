@@ -1,8 +1,8 @@
 class ProduceController < ApplicationController
 
   def index
-    @fruit = Produce.fruit
-    @veggies = Produce.veggie
+    @fruit = Produce.fruit.order(:name)
+    @veggies = Produce.veggie.order(:name)
   end
 
   def new

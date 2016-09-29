@@ -15,5 +15,4 @@ class Produce < ApplicationRecord
     self.where(kind: 'veggie')
   end
 
-
 end
