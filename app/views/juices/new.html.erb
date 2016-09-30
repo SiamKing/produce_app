@@ -7,7 +7,7 @@
       <% 4.times do %>
       <div class="col-xs-3">
         <%= f.fields_for :produce, @juice.produce.build do |prod_builder| %>
-          <%= prod_builder.select 'name', options_from_collection_for_select(Produce.all, 'id', 'name'), include_blank: true %>
+          <%= prod_builder.select 'name', options_from_collection_for_select(@produce, 'id', 'name'), include_blank: true %>
           <%= prod_builder.fields_for :juice_produce, @juice.juice_produce.build do |jp_builder| %>
             <%= jp_builder.number_field :quantity, min: 1 %>
         <% end %>

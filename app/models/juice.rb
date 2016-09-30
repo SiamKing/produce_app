@@ -4,7 +4,6 @@ class Juice < ApplicationRecord
   #accepts_nested_attributes_for :produce, :juice_produce, reject_if: proc { |attributes| attributes[:quantity].blank? }, allow_destroy: true
   validates :name, presence: true
   validates :name, uniqueness: true
-  # validates_associated :produce
 
   def produce_attributes=(produce_attributes)
     produce_attributes.values.each do |produce_attribute|
@@ -17,7 +16,6 @@ class Juice < ApplicationRecord
         if !produce_attribute[:juice_produce_attributes].values.first[:quantity].empty?
           juice_prod = self.juice_produce.find_or_create_by(produce_id: prod.id)
           juice_prod.quantity =  produce_attribute[:juice_produce_attributes].values.first[:quantity]
-          binding.pry
           juice_prod.save!
         end
       end
