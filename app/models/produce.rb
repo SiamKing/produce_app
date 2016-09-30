@@ -4,6 +4,7 @@ class Produce < ApplicationRecord
   has_many :users, through: :produce_items
   has_many :juice_produce, dependent: :destroy
   has_many :juices, through: :juice_produce
+  
   mount_uploader :image, ImageUploader
   accepts_nested_attributes_for :juices, :juice_produce
 

@@ -19,5 +19,10 @@ class UserProduce < ApplicationRecord
     end
   end
 
+  def self.juices_from_fridge
+    self.all.collect do |prod|
+      prod.produce.juices
+    end.uniq
+  end
 
 end
