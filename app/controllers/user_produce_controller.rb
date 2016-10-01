@@ -10,4 +10,12 @@ class UserProduceController < ApplicationController
     end
   end
 
+  def eaten
+    @user_produce = UserProduce.find(params[:format])
+    @user_produce.update_attributes(eaten?: true)
+    @user_produce.save
+    flash[:notice] = "Good for you! You ate your #{@user_produce.produce.name}!"
+    redirect_to user_path(current_user)
+  end
+
 end

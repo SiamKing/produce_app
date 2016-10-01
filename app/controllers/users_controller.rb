@@ -12,16 +12,10 @@ class UsersController < ApplicationController
   end
 
   def index
-    redirect_to produce_index_path unless user_signed_in?
+    redirect_to welcome_path unless user_signed_in?
     @users = User.all
   end
 
-  def eaten
-    @user_produce = UserProduce.find(params[:format])
-    @user_produce.update_attributes(eaten?: true)
-    @user_produce.save
-    flash[:notice] = "Good for you! You ate your #{@user_produce.produce.name}!"
-    redirect_to user_path(current_user)
-  end
+
 
 end

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   get 'users/:id/produce/index' => 'produce#index', as: :user_user_produce_index
-  post 'eaten' => 'users#eaten'
+  post 'eaten' => 'user_produce#eaten'
   get '/welcome' => 'application#welcome'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
