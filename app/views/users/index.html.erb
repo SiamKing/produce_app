@@ -2,12 +2,8 @@
 <ul class="users">
   <% @users.each do |user| %>
   <li>
-    <% if user.image.nil? %>
-      <%= gravatar_for user, size: 50 %>
-    <% else %>
-      <%= image_tag user.image %>
-    <% end %>
+    <%= gravatar_for user, size: 50 %>
     <%= user.name %>
-    <% end %>
   </li>
+  <% end %>
 </ul>

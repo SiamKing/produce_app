@@ -1,8 +1,13 @@
 class ProduceController < ApplicationController
 
   def index
-    @fruit = Produce.fruit.order(:name)
-    @veggies = Produce.veggie.order(:name)
+    if params[:id]
+      @fruit = User.find(params[:id]).produce.fruit.faves
+      @veggies = User.find(params[:id]).produce.veggies.faves
+    else
+      @fruit = Produce.fruit.order(:name)
+      @veggies = Produce.veggies.order(:name)
+    end
   end
 
   def new

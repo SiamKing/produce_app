@@ -2,11 +2,12 @@ class JuicesController < ApplicationController
 
   def index
     if params[:user_id]
-      @juices = User.find(params[:user_id]).juices
+      @user = User.find(params[:user_id])
+      @juices = @user.juices
     else
       @juices = Juice.all
     end
-  end    
+  end
 
   def new
     @juice = Juice.new

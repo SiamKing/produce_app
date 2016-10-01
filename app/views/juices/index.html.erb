@@ -12,4 +12,8 @@
   </div>
 </div>
 <br></br>
-<h1 align="center"><%= link_to "Create a New Juice", new_juice_path, class: "btn btn-outline-primary" %></h1>
+<% if @user %>
+  <h1 align="center"><%= link_to "Create a New Juice", new_user_juice_path, class: "btn btn-outline-primary" %></h1>
+<% else %>
+  <h1 align="center"><%= link_to "Create a New Juice", new_juice_path, class: "btn btn-outline-primary" %></h1>
+<% end %>

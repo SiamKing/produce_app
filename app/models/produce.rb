@@ -12,8 +12,11 @@ class Produce < ApplicationRecord
     self.where(kind: 'fruit')
   end
 
-  def self.veggie
+  def self.veggies
     self.where(kind: 'veggie')
   end
 
+  def self.faves
+    group(:id).order("count(produce.id) DESC")
+  end
 end
