@@ -4,6 +4,8 @@
       <h1 align="center"><%= @produce.name %></h1>
       <div class="text-center col-md-4 col-md-offset-2">
         <%= image_tag @produce.image.large.url %>
+        <br><br><br><br>
+        <%= button_to "Add to fridge", user_produce_index_path(@produce), class: "btn btn-default" %>
       </div>
       <div class="col-md-4 info">
         <h4><%= @produce.content %>
