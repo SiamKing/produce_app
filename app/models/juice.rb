@@ -1,6 +1,7 @@
 class Juice < ApplicationRecord
   has_many :juice_produce, dependent: :destroy
   has_many :produce, through: :juice_produce
+  belongs_to :user
   #accepts_nested_attributes_for :produce, :juice_produce, reject_if: proc { |attributes| attributes[:quantity].blank? }, allow_destroy: true
   validates :name, presence: true
   validates :name, uniqueness: true

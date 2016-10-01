@@ -6,7 +6,7 @@ class JuicesController < ApplicationController
     else
       @juices = Juice.all
     end
-  end
+  end    
 
   def new
     @juice = Juice.new
