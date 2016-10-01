@@ -31,4 +31,8 @@ class Juice < ApplicationRecord
     !pa.empty?
   end
 
+  def self.juices_with_produce(params)
+    joins(:juice_produce).where("produce_id =?", params)
+  end
+
 end

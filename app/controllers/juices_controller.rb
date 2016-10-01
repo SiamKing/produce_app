@@ -2,8 +2,11 @@ class JuicesController < ApplicationController
 
   def index
     if params[:user_id]
-      @user = User.find(params[:user_id])
+      @user = User.find_by(params[:user_id])
       @juices = @user.juices
+    elsif params[:produce_id]
+      @produce = Produce.find_by(params[:produce_id])
+      @juices = Juice.juices_with_produce(params[:produce_id])
     else
       @juices = Juice.all
     end
@@ -34,7 +37,6 @@ class JuicesController < ApplicationController
   end
 
   def show
-    binding.pry
     @juice = Juice.find(params[:id])
     @juice_produce = @juice.juice_produce
   end
