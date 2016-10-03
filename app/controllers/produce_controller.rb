@@ -1,18 +1,20 @@
 class ProduceController < ApplicationController
 
   def index
+    binding.pry
     if params[:id]
       @fruit = User.find(params[:id]).produce.fruit.faves
       @veggies = User.find(params[:id]).produce.veggies.faves
+      @produce_jumbo = "#{current_user.name}'s Faves"
     else
-      @fruit = Produce.fruit.order(:name)
-      @veggies = Produce.veggies.order(:name)
+      @fruit = Produce.fruit
+      @veggies = Produce.veggies
+      @produce_jumbo = "Fresh Produce"
     end
   end
 
   def new
     @produce = Produce.new
-    @submit = "Create Produce"
   end
 
   def create
@@ -31,7 +33,6 @@ class ProduceController < ApplicationController
 
   def edit
     @produce = Produce.find(params[:id])
-    @submit = "Edit Produce"
   end
 
   def update
@@ -42,6 +43,13 @@ class ProduceController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    @produce = Produce.find(params[:id])
+    @produce.destroy
+    flash[:success] = "#{@produce.name} was deleted"
+    redirect_to produce_index_path
   end
 
   private

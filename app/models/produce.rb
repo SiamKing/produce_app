@@ -9,14 +9,14 @@ class Produce < ApplicationRecord
   accepts_nested_attributes_for :juices, :juice_produce
 
   def self.fruit
-    self.where(kind: 'fruit')
+    self.where(kind: 'fruit').order(:name)
   end
 
   def self.veggies
-    self.where(kind: 'veggie')
+    self.where(kind: 'veggie').order(:name)
   end
 
   def self.faves
-    group(:id).order("count(produce.id) DESC")
+    group(:id).order("count(produce.id) DESC").limit(6)
   end
 end
