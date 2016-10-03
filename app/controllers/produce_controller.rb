@@ -1,7 +1,6 @@
 class ProduceController < ApplicationController
 
   def index
-    binding.pry
     if params[:id]
       @fruit = User.find(params[:id]).produce.fruit.faves
       @veggies = User.find(params[:id]).produce.veggies.faves
