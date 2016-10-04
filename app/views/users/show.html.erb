@@ -18,6 +18,7 @@
         <li><%= link_to "See your Faves", user_user_produce_index_path(current_user), class: 'btn btn-default' %></li>
         <li><%= link_to "See all Produce", produce_index_path, class: 'btn btn-default' %></li>
         <li><%= link_to "See all Juices", juices_path, class: 'btn btn-default' %></li>
+        <li><%= link_to "Juices you created", user_juices_path(current_user), class: 'btn btn-default' %></li>
       </ul>
     </div>
   </div>

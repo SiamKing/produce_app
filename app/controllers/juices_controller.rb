@@ -2,13 +2,16 @@ class JuicesController < ApplicationController
 
   def index
     if params[:user_id]
-      @user = User.find_by(params[:user_id])
+      @user = User.find(params[:user_id])
       @juices = @user.juices
+      @header = "Juices created by #{@user.name}"
     elsif params[:produce_id]
-      @produce = Produce.find_by(params[:produce_id])
+      @produce = Produce.find(params[:produce_id])
       @juices = Juice.juices_with_produce(params[:produce_id])
+      @header = "Juices with #{@produce.name}"
     else
       @juices = Juice.all
+      @header = "Fresh Juices"
     end
   end
 
@@ -43,10 +46,7 @@ class JuicesController < ApplicationController
 
   def edit
     @juice = Juice.find(params[:id])
-    # @produce = Produce.all
     @produce_juice = @juice.produce
-    # @juice.produce.build
-    # @juice.juice_produce.build
   end
 
   def update

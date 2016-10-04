@@ -17,7 +17,7 @@
         <h4 align="left"><%= link_to "Edit Juice", edit_juice_path(@juice) %></h4>
       </div>
       <div class="col-xs-6">
-        <p align="right"><%= link_to "Created by #{current_user.name}", user_path(current_user) %></p>
+        <p align="right"><%= link_to "Created by #{@juice.user.name}", user_juices_path(@juice.user) %></p>
       </div>
     </div>
   </div>
