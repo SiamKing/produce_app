@@ -25,4 +25,5 @@ class UserProduce < ApplicationRecord
     end.uniq
   end
 
+
 end

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  include UserProduceHelper
 
   def welcome
     if user_signed_in?
