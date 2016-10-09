@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  before_action :logged_in?, except: :welcome
+
 
   def welcome
     if user_signed_in?
