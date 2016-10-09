@@ -1,6 +1,7 @@
 class ProduceController < ApplicationController
   include ProduceHelper
-  
+  before_action :logged_in?, except: :index
+
   def index
     index_helper(params)
   end
