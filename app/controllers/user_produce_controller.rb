@@ -23,7 +23,7 @@ class UserProduceController < ApplicationController
     @user_produce.update_attributes(eaten?: true)
     @user_produce.save
     flash[:notice] = "Good for you! You ate your #{@user_produce.produce.name}!"
-    redirect_to user_path(current_user)
+    redirect_to user_produce_path(current_user)
   end
 
 end
