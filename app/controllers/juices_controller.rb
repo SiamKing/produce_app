@@ -61,6 +61,18 @@ class JuicesController < ApplicationController
     end
   end
 
+  def destroy
+    @juice = Juice.find(params[:id])
+    if current_user.id == @juice.user_id
+      @juice.destroy
+      flash[:success] = "#{@juice.name} was successfully destroyed. That's good. Nobody liked it anyway!"
+      redirect_to juices_path
+    else
+      flash[:alert] = "Sorry, you do not have permission to delete #{@juice.name}"
+      redirect_to @juice
+    end
+  end
+
   private
 
   def juice_params(*args)

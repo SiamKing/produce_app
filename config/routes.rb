@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :juices, only: :index
   end
 
+  #match 'juices/:id/delete' => 'juices#destroy', via: :delete_juice_path
   get 'users/:id/produce/index' => 'produce#index', as: :user_user_produce_index
   post 'eaten' => 'user_produce#eaten'
   get '/welcome' => 'application#welcome'
