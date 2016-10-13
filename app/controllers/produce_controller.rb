@@ -13,9 +13,10 @@ class ProduceController < ApplicationController
   def create
     @produce = Produce.new(produce_params)
     if @produce.save
-      flash[:notice] = "You are quite the #{@produce.name} lover!"
+      flash[:success] = "You are quite the #{@produce.name} lover!"
       redirect_to @produce
     else
+      flash[:alert] = "Item was not saved. Please fill in all fields."
       render :new
     end
   end
@@ -32,8 +33,10 @@ class ProduceController < ApplicationController
     @produce = Produce.find(params[:id])
     @produce.update_attributes(produce_params)
     if @produce.save
+      flash[:success] = "#{@produce.name} was successfully edited"
       redirect_to @produce
     else
+      flash[:alert] = "The item was not edited"
       render :edit
     end
   end
