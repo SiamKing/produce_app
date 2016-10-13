@@ -140,7 +140,20 @@ aside {
   z-index:2;
 }
 
-/* buttons */
+/* columns */
+.row-centered {
+  text-align: center;
+}
+
+.col-centered {
+  display: inline-block;
+  float: none;
+  /* reset the text align */
+  text-align: left;
+  /* inline-block space fix */
+  margin-right: -4px;
+  min-width: 150px;
+}
 
 
 /* sidebar */
