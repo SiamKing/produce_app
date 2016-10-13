@@ -1,16 +1,17 @@
 <%= render partial: "application/jumbotron", locals: {jumbo: 'jumbotron-juice', header: @header } %>
-
-<div class="row-fluid">
-  <div class="col-lg-10 col-lg-offset-1">
-    <% @juices.each do |juice| %>
-      <div class="col-xs-3 col-md-3 juice">
-        <h3 align="center"><%= link_to juice.name, juice_path(juice) %></h3>
-        <% juice.produce.each do |prod| %>
-        <p align="center"><%= prod.juice_produce.first.quantity %> <%= prod.name %></p>
-        <% end %>
-      </div>
-    <% end %>
+<div class="container">
+  <div class="row row-centered">
+    <div class="col-lg-10 col-lg-offset-1">
+      <% @juices.each do |juice| %>
+        <div class="col-xs-3 col-md-3 col-centered juice">
+          <h3 align="center"><%= link_to juice.name, juice_path(juice) %></h3>
+          <% juice.produce.each do |prod| %>
+          <p align="center"><%= prod.juice_produce.first.quantity %> <%= prod.name %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+    <br></br>
+    <h1 align="center"><%= link_to "Create a New Juice", new_user_juice_path(current_user), class: "btn btn-default" %></h1>
   </div>
-  <br></br>
-  <h1 align="center"><%= link_to "Create a New Juice", new_user_juice_path(current_user), class: "btn btn-default" %></h1>
 </div>

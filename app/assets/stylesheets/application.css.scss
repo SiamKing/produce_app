@@ -149,12 +149,13 @@ aside {
   display: inline-block;
   float: none;
   /* reset the text align */
-  text-align: left;
+  text-align: top;
   /* inline-block space fix */
   margin-right: -4px;
   min-width: 150px;
+  min-height: 200px;
+  vertical-align: top !important;
 }
-
 
 /* sidebar */
 
