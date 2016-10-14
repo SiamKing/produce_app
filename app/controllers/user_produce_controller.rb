@@ -12,8 +12,10 @@ class UserProduceController < ApplicationController
     @user_produce = UserProduce.new(produce_id: params[:format])
     @user_produce.user_id = current_user.id
     if @user_produce.save
+      flash[:success] = "#{@user_produce.produce.name} was added to your fridge"
       redirect_to user_produce_path(current_user)
     else
+      flash[:alert] = "That was not succesful"
       redirect_to produce_index_path
     end
   end
