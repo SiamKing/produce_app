@@ -21,7 +21,6 @@ class UserProduceController < ApplicationController
   end
 
   def eaten
-    binding.pry
     @user_produce = UserProduce.find(params[:format])
     @user_produce.update_attributes(eaten?: true)
     @user_produce.save
