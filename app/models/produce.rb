@@ -1,8 +1,8 @@
 class Produce < ApplicationRecord
   validates :name, uniqueness: true
   validates :name, presence: true
-  has_many :produce_items
-  has_many :users, through: :produce_items
+  has_many :user_produce
+  has_many :users, through: :user_produce
   has_many :juice_produce, dependent: :destroy
   has_many :juices, through: :juice_produce
   before_save { self.name = name.titleize }
