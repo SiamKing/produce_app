@@ -14,6 +14,7 @@ class JuicesController < ApplicationController
   end
 
   def create
+    binding.pry
     juice_create_helper(params)
   end
 

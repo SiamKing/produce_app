@@ -26,3 +26,7 @@ On the home page you can see what is in your fridge and the days left until expi
 
 
 * Ruby version - 2.2.3p173
+
+Contributors - Just TJ Hill at the moment but I welcome all to participate
+
+Released under the MIT License, Copyright (c) 2016

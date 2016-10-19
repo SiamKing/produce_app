@@ -15,7 +15,7 @@ Specs:
 - [x] Include a class level ActiveRecord scope method (model object & class method name and URL to see the working feature e.g. User.most_recipes URL: /users/most_recipes)
     - Produce.faves  URL: /users/:id/produce/index (I used the same route to keep it DRY. I added a helper to keep the controller clean. For example, if the Produce index action received params with a user_id, then it came from the faves link with user_id included.)
 - [x] Include a nested form writing to an associated model using a custom attribute writer (form URL, model name e.g. /recipe/new, Item)
-    - /juices/new, Juice
+    - users/:id/juices/new, Juice
 - [x] Include signup (how e.g. Devise)
     - Devise
 - [x] Include login (how e.g. Devise)

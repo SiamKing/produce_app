@@ -27,7 +27,7 @@ module JuicesHelper
         redirect_to new_juice_path(@juice)
       end
     else
-      flash[:alert] = "Please name the juice and add ingredients"
+      flash[:alert] = "Please name the juice"
       redirect_to new_juice_path(@juice)
     end
   end
