@@ -25,5 +25,12 @@ class UserProduce < ApplicationRecord
     end.uniq
   end
 
+  def self.sorted_fruit
+    self.user_fruit.sort_by {|prod| prod.shelf_life}
+  end
+
+  def self.sorted_veggies
+    self.user_veggies.sort_by {|prod| prod.shelf_life}
+  end
 
 end

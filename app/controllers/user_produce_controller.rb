@@ -4,8 +4,8 @@ class UserProduceController < ApplicationController
   def show
     @user = current_user
     produce = current_user.current_produce
-    @fruit = produce.user_fruit.sort_by {|prod| prod.shelf_life}
-    @veggies = produce.user_veggies.sort_by {|prod| prod.shelf_life}
+    @fruit = produce.sorted_fruit
+    @veggies = produce.sorted_veggies
   end
 
   def create
@@ -21,6 +21,7 @@ class UserProduceController < ApplicationController
   end
 
   def eaten
+    binding.pry
     @user_produce = UserProduce.find(params[:format])
     @user_produce.update_attributes(eaten?: true)
     @user_produce.save
