@@ -35,6 +35,7 @@ gem 'omniauth-facebook'
 # gem 'capistrano-rails', group: :development
 gem "bootstrap-sass", "~> 3.1.1"
 gem "faker"
+gem 'figaro'
 #gem "friendly_id"
 #gem 'devise-bootstrapped', github: 'king601/devise-bootstrapped'
 gem 'autoprefixer-rails'
