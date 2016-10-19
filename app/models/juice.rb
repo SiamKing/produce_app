@@ -32,7 +32,10 @@ class Juice < ApplicationRecord
   end
 
   def self.juices_with_produce(params)
-    joins(:juice_produce).where("produce_id =?", params)
+    joins(:juice_produce).where("produce_id =?", params).order(:name)
   end
 
+  def self.sorted
+    self.all.sort_by {|juice| juice.name}
+  end
 end

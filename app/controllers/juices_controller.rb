@@ -8,7 +8,7 @@ class JuicesController < ApplicationController
 
   def new
     @juice = Juice.new
-    @produce = Produce.all.sort_by {|prod| prod.name}
+    @produce = Produce.sorted
     @juice.produce.build
     @juice.juice_produce.build
   end

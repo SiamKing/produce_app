@@ -20,4 +20,8 @@ class Produce < ApplicationRecord
   def self.faves
     group(:id).order("count(produce.id) DESC").limit(6)
   end
+
+  def self.sorted
+    self.all.sort_by {|prod| prod.name}
+  end
 end

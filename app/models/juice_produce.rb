@@ -6,4 +6,5 @@ class JuiceProduce < ApplicationRecord
   validates :quantity, presence: true
   delegate :name, to: :juice, prefix: true
   #validates :produce_id, uniqueness: { scope: :juice_id }
+
 end

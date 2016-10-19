@@ -24,4 +24,8 @@ class User < ApplicationRecord
     end
   end
 
+  def sorted
+    self.juices.sort_by {|juice| juice.name}
+  end
+
 end

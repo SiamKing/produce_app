@@ -3,14 +3,14 @@ module JuicesHelper
   def juice_index_helper(params)
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @juices = @user.juices.sort_by {|juice| juice.name}
+      @juices = @user.sorted
       @header = "Juices created by #{@user.name}"
     elsif params[:produce_id]
       @produce = Produce.find(params[:produce_id])
-      @juices = Juice.juices_with_produce(params[:produce_id]).sort_by {|juice| juice.name}
+      @juices = Juice.juices_with_produce(params[:produce_id])
       @header = "Juices with #{@produce.name}"
     else
-      @juices = Juice.all.sort_by {|juice| juice.name}
+      @juices = Juice.sorted
       @header = "Fresh Juices"
     end
   end
