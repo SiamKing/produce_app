@@ -5,4 +5,12 @@ module UsersHelper
     image_tag(gravatar_url, alt: user.name, class: "gravatar")
   end
 
+
+  def edit(current_user)
+    if current_user.uid == nil
+      edit_user_registration_path(current_user)
+    else
+
+    end
+  end
 end
