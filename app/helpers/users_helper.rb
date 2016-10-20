@@ -10,7 +10,7 @@ module UsersHelper
     if current_user.uid == nil
       edit_user_registration_path(current_user)
     else
-
+      edit_user_path(current_user)
     end
   end
 end
