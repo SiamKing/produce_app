@@ -7,14 +7,18 @@ class JuicesController < ApplicationController
   end
 
   def new
-    @juice = Juice.new
-    @produce = Produce.sorted
-    @juice.produce.build
-    @juice.juice_produce.build
+    if params[:user_id] == current_user.id
+      @juice = Juice.new
+      @produce = Produce.sorted
+      @juice.produce.build
+      @juice.juice_produce.build
+    else
+      flash[:alert] = "Hey! That's naughty! Stay on your own form!"
+      redirect_to root_path
+    end
   end
 
   def create
-    binding.pry
     juice_create_helper(params)
   end
 
