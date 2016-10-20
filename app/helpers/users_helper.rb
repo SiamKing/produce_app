@@ -7,7 +7,7 @@ module UsersHelper
 
 
   def edit(current_user)
-    if current_user.uid == nil
+    if current_user.provider == nil
       edit_user_registration_path(current_user)
     else
       edit_user_path(current_user)
