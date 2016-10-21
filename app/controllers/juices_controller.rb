@@ -7,7 +7,7 @@ class JuicesController < ApplicationController
   end
 
   def new
-    if params[:user_id] == current_user.id
+    if params[:user_id].to_i == current_user.id
       @juice = Juice.new
       @produce = Produce.sorted
       @juice.produce.build

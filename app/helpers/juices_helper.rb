@@ -24,11 +24,11 @@ module JuicesHelper
         redirect_to @juice
       else
         flash[:alert] = "Please add ingredients"
-        redirect_to new_juice_path(@juice)
+        redirect_to new_user_juice_path(current_user)
       end
     else
       flash[:alert] = "Please name the juice"
-      redirect_to new_juice_path(@juice)
+      redirect_to new_user_juice_path(current_user)
     end
   end
 
