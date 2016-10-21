@@ -11,11 +11,14 @@ If you want to be able to sign in with facebook, through the omniauth-facebook g
   4. Choose a name for the app, choose a category (I used Food & Drink) and hit 'Create App ID'
   5. Scroll down to the section title 'Tell us about your website' and add the url 'http://localhost:3000'
   6. In the next steps section, click 'Skip to Developer Dashboard'
-  7. I like to copy the app ID and the app secret in a TextEdit document outside of my Text Editor (ie. Atom or Sublime)
+  7. Copy your Facebook App ID and Secret and put them in config/application.yml like this:
+     FACEBOOK_APP_ID=‘your_app_id'
+     FACEBOOK_SECRET=‘your_secret'
+  8. This file was created by the Figaro gem and will keep your secrets safe by putting them in your gitignore file. That way they won't be pushed to git.
   8. In the sidebar menu on the left under Products, click 'Add Product'
   9. Form here hit 'Get Started' next to Facebook login
   10. Where it says 'Valid OAuth redirect URIs', type: http://localhost:3000/users/auth/facebook/callback and save changes
-  11. When you are ready to deploy locally, in the terminal, type: FACEBOOK_APP_ID=‘your_app_id' FACEBOOK_SECRET=‘your_secret' rails s
+  11. When you are ready to deploy locally, in the terminal, type: rails s
   12. You should be good to go!
 
 Go to http://localhost:3000 in your web browser and start playing
