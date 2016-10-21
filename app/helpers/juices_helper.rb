@@ -16,19 +16,24 @@ module JuicesHelper
   end
 
   def juice_create_helper(params)
-    @juice = Juice.new(juice_params(:name))
-    if @juice.save
-      @juice.user_id = current_user.id
-      @juice.update_attributes(juice_params(:produce_attributes => [:name, :juice_produce_attributes => :quantity]))
+    if Juice.find_by(name: params[:juice][:name])
+      flash[:alert] = "That name has already been taken. Please choose another name."
+      redirect_to new_user_juice_path(current_user)
+    else
+      @juice = Juice.new(juice_params(:name))
       if @juice.save
-        redirect_to @juice
+        @juice.user_id = current_user.id
+        @juice.update_attributes(juice_params(:produce_attributes => [:name, :juice_produce_attributes => :quantity]))
+        if @juice.save
+          redirect_to @juice
+        else
+          flash[:alert] = "Please add ingredients"
+          redirect_to new_user_juice_path(current_user)
+        end
       else
-        flash[:alert] = "Please add ingredients"
+        flash[:alert] = "Please name the juice"
         redirect_to new_user_juice_path(current_user)
       end
-    else
-      flash[:alert] = "Please name the juice"
-      redirect_to new_user_juice_path(current_user)
     end
   end
 
