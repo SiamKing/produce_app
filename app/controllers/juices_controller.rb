@@ -19,6 +19,7 @@ class JuicesController < ApplicationController
   end
 
   def create
+    # params[:juice][:produce_attributes].values.first[:name]
     juice_create_helper(params)
   end
 
