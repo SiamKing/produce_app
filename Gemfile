@@ -41,6 +41,8 @@ gem 'figaro'
 gem 'autoprefixer-rails'
 gem 'font-awesome-rails'
 gem 'bootstrap-social-rails'
+gem 'active_model_serializers'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'sqlite3', '1.3.11'
