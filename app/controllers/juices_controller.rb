@@ -4,6 +4,10 @@ class JuicesController < ApplicationController
 
   def index
     juice_index_helper(params)
+    respond_to do |f|
+      f.html { render :index }
+      f.json { render json: @juices }
+    end
   end
 
   def new
