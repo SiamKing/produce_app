@@ -24,4 +24,12 @@ class Produce < ApplicationRecord
   def self.sorted
     self.all.sort_by {|prod| prod.name}
   end
+
+  def next
+    Produce.where("id > ?", id).limit(1).first
+  end
+
+  def prev
+    Produce.where("id < ?", id).limit(1).first
+  end
 end
