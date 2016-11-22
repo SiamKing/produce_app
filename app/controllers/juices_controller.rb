@@ -30,6 +30,10 @@ class JuicesController < ApplicationController
   def show
     @juice = Juice.find(params[:id])
     @juice_produce = @juice.juice_produce
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @juice }
+    end
   end
 
   def edit
