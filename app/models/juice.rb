@@ -23,6 +23,14 @@ class Juice < ApplicationRecord
     end
   end
 
+  def next
+    Juice.where("id > ?", id).limit(1).first
+  end
+
+  def prev
+    Juice.where("id < ?", id).limit(1).first
+  end
+
   # def produce_attributes?(produce_attributes)
   #   pa = ""
   #   produce_attributes.values.each do |produce_attribute|
