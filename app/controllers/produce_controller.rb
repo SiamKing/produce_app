@@ -23,6 +23,10 @@ class ProduceController < ApplicationController
 
   def show
     @produce = Produce.find(params[:id])
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @produce }
+    end
   end
 
   def edit
