@@ -1,14 +1,16 @@
 <div class="row">
   <div class="container-fluid">
     <div class="row">
-      <h1 align="center"><%= @produce.name %></h1>
+      <h1 align="center" class="produceName"><%= @produce.name %></h1>
       <div class="text-center col-md-4 col-md-offset-2">
+      <div class="produceImage">
         <%= image_tag @produce.image.large.url %>
+      </div>
         <br><br><br><br>
       </div>
       <div class="col-md-4 info">
-        <h4><%= @produce.content %>
-          Shelf life is usually about <%= @produce.expires_in %> days.</h4>
+        <h4 class="produceContent"><%= @produce.content %></h4>
+          <h4 id="expiresIn">Shelf life is usually about <%= @produce.expires_in %> days.</h4>
           <br></br>
         </div>
       </div>
@@ -18,13 +20,45 @@
             <%= button_to "Add to fridge", user_produce_index_path(@produce), class: "btn btn-default" %>
           </div>
           <div class="col-xs-6">
-            <h4 align="center"><%= link_to "Edit", edit_produce_path %></h4>
+            <h4 align="center"><a class="editProduce" href="/produce/<%= @produce.id %>/edit">Edit</a></h4>
           </div>
           <div class="col-xs-3">
-            <h4 align="right"><%= link_to "Juices with #{@produce.name}", produce_juices_path(@produce) %></h4>
+            <h4 align="right" ><a class="juiceLink" href="/produce/<%= @produce.id %>/juices">Juices with <%= @produce.name %></a></h4>
+            <!-- <%= link_to "Juices with #{@produce.name}", produce_juices_path(@produce) %> -->
           </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+</br>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-4 col-md-offset-4" align="center">
+      <a href="#" class="js-previous" data-id="<%= @produce.id %>">Previous Item    </a>
+        ------  <a href="#" class="js-next" data-id="<%= @produce.id %>">    Next Item</a>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $('.js-previous').on('click', function(e) {
+    e.preventDefault();
+    console.log($('.js-previous').data("id"));
+    var prevId = $('.js-previous').data("id") - 1;
+    $.get('/produce/' + prevId + ".json", function(data) {
+      var produce = data;
+      console.log(data["id"]);
+      $('.produceName').text(produce["name"]);
+      $('img').attr("src", produce["image"]["image"]["large"]["url"]);
+      $('.produceContent').text(produce["content"]);
+      $('#expiresIn').text("Shelf life is usually about " + produce["expires_in"] + " days.");
+      $('.button_to').attr('action', "/user_produce." + prevId);
+      $('.editProduce').attr('href', '/produce/' + data["id"] + '/edit');
+      $('.juiceLink').attr("href", "/produce/" + data["id"] + "/juices").text("Juices with " + produce["name"]);
+      $('.js-previous').attr("data-id", data["id"]);
+      $('.js-next').attr('data-id', data["id"]);
+    });
+    var nextId = $('.js-next').data("id") + 1;
+  });
+</script>
