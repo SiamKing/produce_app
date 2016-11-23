@@ -42,7 +42,7 @@
 <script type="text/javascript">
   $('.previous').on('click', function(e) {
     e.preventDefault();
-    var newId = $(this).data("id") - 1;
+    var newId = parseInt($(this).attr("data-id")) - 1;
     $.get('/juices/' + newId + ".json", function(data) {
       $('#juice').empty().append(data);
     });
