@@ -1,9 +1,8 @@
-<p id="juice"><%= @juice %></p>
 <%= render partial: 'application/jumbotron', locals: {jumbo: 'jumbotron-juice', header: @juice.name} %>
 <div class="container">
   <div class="row row-centered">
     <h2 align="center">Ingredients</h2>
-    <div class="col-xs-8 col-md-8 col-md-offset-2">
+    <div class="col-xs-8 col-md-8 col-md-offset-2 juice-produce">
       <% @juice_produce.each do |juice_prod| %>
       <div class="col-xs-4 col-centered">
         <h3 align="center"><%= juice_prod.quantity %> <%= juice_prod.produce.name %></h3>
@@ -42,9 +41,15 @@
 <script type="text/javascript">
   $('.previous').on('click', function(e) {
     e.preventDefault();
-    var newId = parseInt($(this).attr("data-id")) - 1;
-    $.get('/juices/' + newId + ".json", function(data) {
-      $('#juice').empty().append(data);
+    var prevId = parseInt($(this).attr("data-id")) - 1;
+    $.get('/juices/' + prevId + ".json", function(data) {
+      var juice = data
+      $('.jumbo-header').text(juice.name);
+      console.log(juice);
+      $.each(juice.produce, function(index, jp) {
+
+      });
+
     });
 
   });
