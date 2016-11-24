@@ -1,7 +1,6 @@
 function previous() {
   $('.js-previous').on('click', function(e) {
     e.preventDefault();
-    console.log($('.js-previous').attr("data-id") === "1");
     if ($('.js-previous').attr("data-id") === "1") {
       $('.js-previous').hide();
       alert("That is the first item...click next to go the other way");
@@ -50,15 +49,7 @@ function juiceAJAX(id, click) {
     $('.js-previous').attr("data-id", juice["id"]);
     $('.js-next').attr('data-id', juice["id"]);
   }).fail(function(error) {
-    if (click.className === "js-next") {
-      $('.js-previous').attr("data-id", id + 1);
-      $('.js-next').attr('data-id', id + 1);
-      alert("Sorry...that item does not exist")
-    } else {
-      $('.js-previous').attr("data-id", id - 1);
-      $('.js-next').attr('data-id', id - 1);
-      alert("Sorry...that item does not exist");
-    }
+    thereIsAnError(id, click);
   });
 }
 
@@ -75,14 +66,18 @@ function produceAJAX(id, click) {
     $('.js-previous').attr("data-id", data["id"]);
     $('.js-next').attr('data-id', data["id"]);
   }).fail(function(error) {
-    if (click.className === "js-next") {
-      $('.js-previous').attr("data-id", data["id"] + 1);
-      $('.js-next').attr('data-id', data["id"] + 1);
-      alert("Sorry...that item does not exist")
-    } else {
-      $('.js-previous').attr("data-id", data["id"] - 1);
-      $('.js-next').attr('data-id', data["id"] - 1);
-      alert("Sorry...that item does not exist");
-    }
+    thereIsAnError(id, click);
   });
+}
+
+function thereIsAnError(id, click) {
+  if (click.className === "js-next") {
+    $('.js-previous').attr("data-id", id + 1);
+    $('.js-next').attr('data-id', id + 1);
+    alert("Sorry...that item does not exist");
+  } else {
+    $('.js-previous').attr("data-id", id - 1);
+    $('.js-next').attr('data-id', id - 1);
+    alert("Sorry...that item does not exist");
+  }
 }
