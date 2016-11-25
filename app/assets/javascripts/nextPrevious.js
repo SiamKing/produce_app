@@ -74,16 +74,16 @@ function produceAJAX(id, element) {
     $('.produceContent').text(produce["content"]);
     $('#expiresIn').text("Shelf life is usually about " + produce["expires_in"] + " days.");
     $('.button_to').attr('action', "/user_produce." + id);
-    $('.editProduce').attr('href', '/produce/' + data["id"] + '/edit');
-    $('.juiceLink').attr("href", "/produce/" + data["id"] + "/juices").text("Juices with " + produce["name"]);
-    $('.js-previous').attr("data-id", data["id"]);
-    $('.js-next').attr('data-id', data["id"]);
+    $('.editProduce').attr('href', '/produce/' + produce["id"] + '/edit');
+    $('.juiceLink').attr("href", "/produce/" + produce["id"] + "/juices").text("Juices with " + produce["name"]);
+    $('.js-previous').attr("data-id", produce["id"]);
+    $('.js-next').attr('data-id', produce["id"]);
     if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
       $('.js-next').hide();
     }
     if ($('.js-previous').attr("data-id") === "1") {
       $('.js-previous').hide();
-    } 
+    }
   }).fail(function(error) {
     thereIsAnError(id, element);
   });

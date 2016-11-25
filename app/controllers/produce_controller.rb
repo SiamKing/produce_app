@@ -23,6 +23,7 @@ class ProduceController < ApplicationController
 
   def show
     @produce = Produce.find(params[:id])
+    @last_produce_id = Produce.last.id
     respond_to do |f|
       f.html { render :show }
       f.json { render json: @produce }
