@@ -1,35 +1,42 @@
 function previous() {
   $('.js-previous').on('click', function(e) {
     e.preventDefault();
+    $('.js-next').show();
     if ($('.js-previous').attr("data-id") === "1") {
       $('.js-previous').hide();
       alert("That is the first item...click next to go the other way");
     } else {
       $('.js-previous').show();
+      var element = this;
       var id = $('.js-previous').attr("data-id") - 1;
       if ($(this).html() === "Previous Juice" || $(this).html() ==="Next Juice") {
-        juiceAJAX(id);
+        juiceAJAX(id, element);
       } else {
-        produceAJAX(id);
+        produceAJAX(id, element);
       }
     }
   });
 }
 function next() {
   $('.js-next').on('click', function(e) {
-    $('.js-previous').show();
-    var click = this;
     e.preventDefault();
-    var id = parseInt($('.js-next').attr("data-id")) + 1;
-    if ($(this).html() === "Previous Juice" || $(this).html() ==="Next Juice") {
-      juiceAJAX(id, click);
+    $('.js-previous').show();
+    if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
+      $('.js-next').hide();
+      alert("That was the final item...please click previous to go the other way");
     } else {
-      produceAJAX(id, click);
+      var element = this;
+      var id = parseInt($('.js-next').attr("data-id")) + 1;
+      if ($(this).html() === "Previous Juice" || $(this).html() ==="Next Juice") {
+        juiceAJAX(id, element);
+      } else {
+        produceAJAX(id, element);
+      }
     }
   });
 }
 
-function juiceAJAX(id, click) {
+function juiceAJAX(id, element) {
   $.get('/juices/' + id + ".json", function(data) {
     var juice = data
     $('.jumbo-header').text(juice.name);
@@ -48,12 +55,18 @@ function juiceAJAX(id, click) {
     $('.deleteJuice').attr('href', '/juices/' + juice.id);
     $('.js-previous').attr("data-id", juice["id"]);
     $('.js-next').attr('data-id', juice["id"]);
+    if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
+      $('.js-next').hide();
+    }
+    if ($('.js-previous').attr("data-id") === "1") {
+      $('.js-previous').hide();
+    } 
   }).fail(function(error) {
-    thereIsAnError(id, click);
+    thereIsAnError(id, element);
   });
 }
 
-function produceAJAX(id, click) {
+function produceAJAX(id, element) {
   $.get('/produce/' + id + ".json", function(data) {
     var produce = data;
     $('.produceName').text(produce["name"]);
@@ -66,12 +79,12 @@ function produceAJAX(id, click) {
     $('.js-previous').attr("data-id", data["id"]);
     $('.js-next').attr('data-id', data["id"]);
   }).fail(function(error) {
-    thereIsAnError(id, click);
+    thereIsAnError(id, element);
   });
 }
 
-function thereIsAnError(id, click) {
-  if (click.className === "js-next") {
+function thereIsAnError(id, element) {
+  if (element.className === "js-next") {
     $('.js-previous').attr("data-id", id + 1);
     $('.js-next').attr('data-id', id + 1);
     alert("Sorry...that item does not exist");
