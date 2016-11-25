@@ -68,6 +68,7 @@ function juiceAJAX(id, element) {
 
 function produceAJAX(id, element) {
   $.get('/produce/' + id + ".json", function(data) {
+    console.log(data);
     var produce = data;
     $('.produceName').text(produce["name"]);
     $('img').attr("src", produce["image"]["image"]["large"]["url"]);
