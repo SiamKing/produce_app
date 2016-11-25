@@ -60,7 +60,7 @@ function juiceAJAX(id, element) {
     }
     if ($('.js-previous').attr("data-id") === "1") {
       $('.js-previous').hide();
-    } 
+    }
   }).fail(function(error) {
     thereIsAnError(id, element);
   });
@@ -78,6 +78,12 @@ function produceAJAX(id, element) {
     $('.juiceLink').attr("href", "/produce/" + data["id"] + "/juices").text("Juices with " + produce["name"]);
     $('.js-previous').attr("data-id", data["id"]);
     $('.js-next').attr('data-id', data["id"]);
+    if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
+      $('.js-next').hide();
+    }
+    if ($('.js-previous').attr("data-id") === "1") {
+      $('.js-previous').hide();
+    } 
   }).fail(function(error) {
     thereIsAnError(id, element);
   });
