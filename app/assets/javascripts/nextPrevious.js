@@ -68,13 +68,12 @@ function juiceAJAX(id, element) {
 
 function produceAJAX(id, element) {
   $.get('/produce/' + id + ".json", function(data) {
-    console.log(data);
     var produce = data;
     $('.produceName').text(produce["name"]);
     $('img').attr("src", produce["image"]["image"]["large"]["url"]);
     $('.produceContent').text(produce["content"]);
     $('#expiresIn').text("Shelf life is usually about " + produce["expires_in"] + " days.");
-    $('.button_to').attr('action', "/user_produce." + id);
+    $('.addFridge').attr('action', "/user_produce." + id);
     $('.editProduce').attr('href', '/produce/' + produce["id"] + '/edit');
     $('.juiceLink').attr("href", "/produce/" + produce["id"] + "/juices").text("Juices with " + produce["name"]);
     $('.js-previous').attr("data-id", produce["id"]);
