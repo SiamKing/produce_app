@@ -33,20 +33,26 @@
 <br>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <div class="col-md-4 col-md-offset-4">
+    <div class="col-md-4 col-md-offset-4" align="center">
       <a href="#" class="js-previous" data-id="<%= @juice.id %>">Previous Juice</a>
       ------<a href="#" class="js-next" data-id="<%= @juice.id %>" last-id="<%= @last_juice_id %>">Next Juice</a>
     </div>
   </div>
 </div>
+<br /><br /><br />
 
-<div class="comment">
-  <%= form_for @juice.comments.build do |f| %>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <%= f.submit %>
-  <% end %>
+<div class="row js-commentForm">
+  <div class="col-md-8 col-md-offset-2" align="center">
+    <h3>Leave a Comment</h3>
+    <%= form_for @juice.comments.build do |f| %>
+      <%= hidden_field_tag :user_id, current_user %>
+      <%= f.text_area :content %>
+      <br>
+      <%= f.submit class: 'btn btn-default'%>
+    <% end %>
+  </div>
 </div>
+
 
 <script type="text/javascript">
 $(function() {
