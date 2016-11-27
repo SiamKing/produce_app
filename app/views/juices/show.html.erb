@@ -41,7 +41,7 @@
 </div>
 
 <div class="comment">
-  <%= form_for @comment do |f| %>
+  <%= form_for @juice.comments.build do |f| %>
     <%= f.label :content %>
     <%= f.text_area :content %>
     <%= f.submit %>
