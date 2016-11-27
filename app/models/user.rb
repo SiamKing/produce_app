@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :user_produce
   has_many :produce, through: :user_produce
   has_many :juices
+  has_many :comments
 
   def current_produce
     self.user_produce.where(eaten?: false)
