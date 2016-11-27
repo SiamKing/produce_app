@@ -40,6 +40,14 @@
   </div>
 </div>
 
+<div class="comment">
+  <%= form_for @comment do |f| %>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <%= f.submit %>
+  <% end %>
+</div>
+
 <script type="text/javascript">
 $(function() {
   previous();
