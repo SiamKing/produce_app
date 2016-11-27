@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'application#welcome'
-  resources :user_produce, :produce, :juice_produce, :juices
+  resources :user_produce, :produce, :juice_produce, :juices, :comments
   devise_for :users, :controllers => { registrations: 'registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :users do
