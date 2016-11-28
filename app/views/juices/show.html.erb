@@ -40,7 +40,16 @@
   </div>
 </div>
 <br /><br /><br />
-
+<div class="row">
+  <div class="juice-comments">
+    <% @juice.comments.each do |comment| %>
+    <div class="col-md-8 col-md-offset-2">
+      <p><%= comment.user.name %>
+      <%= comment.content %></p>
+    </div>
+    <% end %>
+  </div>
+</div>
 <div class="row js-commentForm">
   <div class="col-md-8 col-md-offset-2" align="center">
     <h3>Leave a Comment</h3>
