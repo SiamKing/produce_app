@@ -3,7 +3,7 @@
     <div class="panel panel-white post panel-shadow">
       <div class="post-heading">
         <div class="pull-left image">
-          <img src="" class="img-circle avatar" alt="Gravatar">
+          <img src="<%= h(gravatar_url(comment.user.email)) %>" class="img-circle avatar" alt="Gravatar">
         </div>
         <div class="pull-left meta">
           <div class="title h5">
