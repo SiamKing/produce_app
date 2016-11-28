@@ -46,9 +46,10 @@
   <% end %>
 </div
 <div class="row js-commentForm">
-  <div class="col-md-8 col-md-offset-2" align="center">
+  <div class="col-md-8 col-md-offset-2 form-inline" align="center">
     <h3>Leave a Comment</h3>
     <%= form_for @juice.comments.build do |f| %>
+      <%= hidden_field_tag :juice_id, @juice.id %>
       <%= hidden_field_tag :user_id, current_user %>
       <%= f.text_area :content %>
       <br>
