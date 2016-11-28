@@ -31,7 +31,7 @@ class JuicesController < ApplicationController
     @juice = Juice.find(params[:id])
     @juice_produce = @juice.juice_produce
     @last_juice_id = Juice.last.id
-    @juice.comments.build
+    @juice_comments = @juice.comments
     respond_to do |f|
       f.html { render :show }
       f.json { render json: @juice }
