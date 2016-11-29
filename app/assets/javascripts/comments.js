@@ -12,9 +12,6 @@ function comment() {
 
     commentPost.done(function(data) {
       console.log(data);
-      var gravatar = $('<img>').attr({src: 'http://www.gravatar.com/avatar/' + MD5(data.user.email), class: 'img-circle avatar'});;
-      console.log(gravatar);
-      var comment = data["content"];
       var html = '<div class="row">';
       html += '<div class="col-sm-8 col-sm-offset-2">';
       html += '<div class="panel panel-white post panel-shadow">';
@@ -38,6 +35,7 @@ function comment() {
       html += '</div>';
       $('.comments').append(html);
       $('.comment-area').val('');
+      $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment')
     });
   });
 }
