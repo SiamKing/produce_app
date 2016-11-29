@@ -1,13 +1,7 @@
 function comment() {
   $('form').on('submit', function(e) {
     e.preventDefault();
-
     var values = $(this).serialize();
-    // var comment = $(".comment-area").val();
-    // var juice_id = $("#juice_id").val();
-    // var user_id = $("#user_id").val();
-    var thissy = $(this);
-
     var commentPost = $.post('/comments', values);
 
     commentPost.done(function(data) {
@@ -15,8 +9,6 @@ function comment() {
       var month = ["Jan", "Feb", "March", "April", "May", "June",
       "July", "Aug", "Sept", "Oct", "Nov", "Dec"][mydate.getMonth()];
       var fullDate = month + ' ' + mydate.getDate() + ', '+ mydate.getFullYear();
-
-      console.log(data);
       var html = '<div class="row">';
       html += '<div class="col-sm-8 col-sm-offset-2">';
       html += '<div class="panel panel-white post panel-shadow">';

@@ -2,8 +2,6 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.create(comment_params)
-    binding.pry
-
     render json: @comment, status: 201
   end
 
