@@ -5,27 +5,33 @@ function comment() {
     var commentPost = $.post('/comments', values);
 
     commentPost.done(function(data) {
-      var mydate = new Date();
+      var comment = data;
+      var mydate = new Date(comment.created_at);
       var month = ["Jan", "Feb", "March", "April", "May", "June",
       "July", "Aug", "Sept", "Oct", "Nov", "Dec"][mydate.getMonth()];
       var fullDate = month + ' ' + mydate.getDate() + ', '+ mydate.getFullYear();
+      var email = MD5(comment.user.email);
+      var user_id = comment.user_id;
+      var userName = comment.user.name;
+      var commentContent = comment.content;
+      
       var html = '<div class="row">';
       html += '<div class="col-sm-8 col-sm-offset-2">';
       html += '<div class="panel panel-white post panel-shadow">';
       html += '<div class="post-heading">';
       html += '<div class="pull-left image">';
-      html += '<img src="http://www.gravatar.com/avatar/' + MD5(data.user.email) + '" class="img-circle avatar" alt="Gravatar">';
+      html += '<img src="http://www.gravatar.com/avatar/' + email + '" class="img-circle avatar" alt="Gravatar">';
       html += '</div>';
       html += '<div class="pull-left meta">';
       html += '<div class="title h5">';
-      html += '<a href="/users."' + data.user_id + '">' + data.user.name + ' commented on</a>';
+      html += '<a href="/users."' + user_id + '">' + userName + ' commented on</a>';
       html += '</div>';
       html += '<h6 class="text-muted time">' + fullDate + '</h6>';
       html += '</div>';
       html += '</div>';
       html += '<br>';
       html += '<div class="post-description">';
-      html += '<p>' + data.content + '</p>';
+      html += '<p>' + commentContent + '</p>';
       html += '</div>';
       html += '</div>';
       html += '</div>';
