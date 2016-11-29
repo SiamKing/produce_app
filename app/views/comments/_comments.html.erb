@@ -8,9 +8,9 @@
         <div class="pull-left meta">
           <div class="title h5">
             <%= link_to comment.user.name, users_path(comment.user) %>
-            commented
+            commented on
           </div>
-          <h6 class="text-muted time"><%= ((Time.now - comment.created_at.to_time) / 1.day).to_i %> day ago</h6>
+          <h6 class="text-muted time"><%= comment.created_at.strftime("%b %d, %Y")%></h6>
         </div>
       </div>
       <br>
