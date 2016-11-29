@@ -3,4 +3,5 @@ class JuiceSerializer < ActiveModel::Serializer
   has_one :user
   has_many :juice_produce
   has_many :produce
+  has_many :comments
 end

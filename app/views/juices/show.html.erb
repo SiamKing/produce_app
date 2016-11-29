@@ -40,7 +40,7 @@
   </div>
 </div>
 <br /><br /><br />
-<div class="container">
+<div class="container comments">
   <% @juice_comments.each do |comment| %>
     <%= render partial: 'comments/comments', locals: {comment: comment} %>
   <% end %>
@@ -48,9 +48,9 @@
 <div class="container">
   <div class="row js-commentForm">
     <div class="col-sm-8 col-sm-offset-2">
-      <%= form_for @juice.comments.build, class: 'form-inline' do |f| %>
-        <%= hidden_field_tag :juice_id, @juice.id %>
-        <%= hidden_field_tag :user_id, current_user %>
+      <%= form_for @comment do |f| %>
+        <%= f.hidden_field :juice_id, value: @juice.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
         <div class="col-sm-12">
           <div class="col-sm-9">
             <%= f.text_area :content, placeholder: "Your Comment", class: "panel panel-white post panel-shadow comment-area" %>
