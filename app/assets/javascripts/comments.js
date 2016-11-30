@@ -1,49 +1,57 @@
+$(function() {
+  Comment.ready();
+});
+
 function Comment(attributes) {
   this.userName = attributes.user.name;
   this.userId = attributes.user_id;
   this.commentContent = attributes.content;
   this.email = MD5(attributes.user.email);
   this.formattedDate = commentDate(attributes.created_at)
-
 }
 
-$(function() {
+Comment.ready = function(e) {
   Comment.templateSource = $("#comment-template").html();
   Comment.template = Handlebars.compile(Comment.templateSource);
-});
+  Comment.formSubmitListener();
+}
 
 Comment.prototype.renderHTML = function() {
   return Comment.template(this);
 }
 
 Comment.success = function(data) {
-  var comment = new Comment(data);
-  var commentHTML = comment.renderHTML();
-
-  $('.comments').append(commentHTML);
   $('.comment-area').val('');
   $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment');
+  var comment = new Comment(data);
+  var commentHTML = comment.renderHTML();
+  $('.comments').append(commentHTML);
 }
 
-function comment() {
-  $('form').on('submit', function(e) {
-    e.preventDefault();
-    var $form = $(this);
-    var action = $form.attr("action")
-    var values = $form.serialize();
-
-    $.ajax({
-      url: action,
-      data: values,
-      dataType: "json",
-      method: "POST"
-    })
-    .success(Comment.success)
-    .error(function(response) {
-      console.log(response);
-    });
-  });
+Comment.error = function(error) {
+  console.log(error);
 }
+
+Comment.formSubmitListener = function() {
+  $('form').on('submit', Comment.formSubmit)
+}
+
+Comment.formSubmit = function(e) {
+  e.preventDefault();
+  var $form = $(this);
+  var action = $form.attr("action")
+  var values = $form.serialize();
+
+  $.ajax({
+    url: action,
+    data: values,
+    dataType: "json",
+    method: "POST"
+  })
+  .success(Comment.success)
+  .error(Comment.error)
+}
+
 function commentDate(date) {
   var commentDate = new Date(date);
   var month = ["Jan", "Feb", "March", "April", "May", "June",
