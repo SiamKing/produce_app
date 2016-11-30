@@ -41,7 +41,6 @@ Comment.formSubmit = function(e) {
   var $form = $(this);
   var action = $form.attr("action")
   var values = $form.serialize();
-
   $.ajax({
     url: action,
     data: values,
