@@ -3,10 +3,18 @@ function Comment(attributes) {
   this.userId = attributes.user_id;
   this.commentContent = attributes.content;
   this.email = MD5(attributes.user.email);
+  this.formattedDate = commentDate(attributes.created_at)
 
 }
 
-Comment.prototype.renderHTML
+$(function() {
+  Comment.templateSource = $("#comment-template").html();
+  Comment.template = Handlebars.compile(Comment.templateSource);
+});
+
+Comment.prototype.renderHTML = function() {
+  return Comment.template(this);
+}
 
 function comment() {
   $('form').on('submit', function(e) {
@@ -14,7 +22,6 @@ function comment() {
     var $form = $(this);
     var action = $form.attr("action")
     var values = $form.serialize();
-    // var commentPost = $.post(action, values);
 
     $.ajax({
       url: action,
@@ -24,10 +31,9 @@ function comment() {
     })
     .success(function(data) {
       var comment = new Comment(data);
-      var commentHTML = comment.renderDiv();
+      var commentHTML = comment.renderHTML();
 
-      var html = commentAppend(data);
-      $('.comments').append(html);
+      $('.comments').append(commentHTML);
       $('.comment-area').val('');
       $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment')
     })
@@ -36,13 +42,16 @@ function comment() {
     });
   });
 }
-
-function commentAppend(data) {
-  var comment = data;
-  var commentDate = new Date(comment.created_at);
+function commentDate(date) {
+  var commentDate = new Date(date);
   var month = ["Jan", "Feb", "March", "April", "May", "June",
   "July", "Aug", "Sept", "Oct", "Nov", "Dec"][commentDate.getMonth()];
   var formattedDate = month + ' ' + commentDate.getDate() + ', '+ commentDate.getFullYear();
+  return formattedDate;
+}
+
+function commentAppend(data) {
+  var comment = data;
   var email = MD5(comment.user.email);
   var userId = comment.user_id;
   var userName = comment.user.name;
