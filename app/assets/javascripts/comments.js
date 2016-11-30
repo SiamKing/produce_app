@@ -1,3 +1,13 @@
+function Comment(attributes) {
+  this.userName = attributes.user.name;
+  this.userId = attributes.user_id;
+  this.commentContent = attributes.content;
+  this.email = MD5(attributes.user.email);
+
+}
+
+Comment.prototype.renderHTML
+
 function comment() {
   $('form').on('submit', function(e) {
     e.preventDefault();
@@ -13,6 +23,9 @@ function comment() {
       method: "POST"
     })
     .success(function(data) {
+      var comment = new Comment(data);
+      var commentHTML = comment.renderDiv();
+
       var html = commentAppend(data);
       $('.comments').append(html);
       $('.comment-area').val('');
