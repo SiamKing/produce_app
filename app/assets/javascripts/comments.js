@@ -16,6 +16,15 @@ Comment.prototype.renderHTML = function() {
   return Comment.template(this);
 }
 
+Comment.success = function(data) {
+  var comment = new Comment(data);
+  var commentHTML = comment.renderHTML();
+
+  $('.comments').append(commentHTML);
+  $('.comment-area').val('');
+  $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment');
+}
+
 function comment() {
   $('form').on('submit', function(e) {
     e.preventDefault();
@@ -29,14 +38,7 @@ function comment() {
       dataType: "json",
       method: "POST"
     })
-    .success(function(data) {
-      var comment = new Comment(data);
-      var commentHTML = comment.renderHTML();
-
-      $('.comments').append(commentHTML);
-      $('.comment-area').val('');
-      $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment')
-    })
+    .success(Comment.success)
     .error(function(response) {
       console.log(response);
     });
@@ -50,36 +52,36 @@ function commentDate(date) {
   return formattedDate;
 }
 
-function commentAppend(data) {
-  var comment = data;
-  var email = MD5(comment.user.email);
-  var userId = comment.user_id;
-  var userName = comment.user.name;
-  var commentContent = comment.content;
-
-  var html = '<div class="row">';
-  html += '<div class="col-sm-8 col-sm-offset-2">';
-  html += '<div class="panel panel-white post panel-shadow">';
-  html += '<div class="post-heading">';
-  html += '<div class="pull-left image">';
-  html += '<img src="http://www.gravatar.com/avatar/' + email + '" class="img-circle avatar" alt="Gravatar">';
-  html += '</div>';
-  html += '<div class="pull-left meta">';
-  html += '<div class="title h5">';
-  html += '<a href="/users."' + userId + '">' + userName + ' commented on</a>';
-  html += '</div>';
-  html += '<h6 class="text-muted time">' + formattedDate + '</h6>';
-  html += '</div>';
-  html += '</div>';
-  html += '<br>';
-  html += '<div class="post-description">';
-  html += '<p>' + commentContent + '</p>';
-  html += '</div>';
-  html += '</div>';
-  html += '</div>';
-  html += '</div>';
-  return html;
-}
+// function commentAppend(data) {
+//   var comment = data;
+//   var email = MD5(comment.user.email);
+//   var userId = comment.user_id;
+//   var userName = comment.user.name;
+//   var commentContent = comment.content;
+//
+//   var html = '<div class="row">';
+//   html += '<div class="col-sm-8 col-sm-offset-2">';
+//   html += '<div class="panel panel-white post panel-shadow">';
+//   html += '<div class="post-heading">';
+//   html += '<div class="pull-left image">';
+//   html += '<img src="http://www.gravatar.com/avatar/' + email + '" class="img-circle avatar" alt="Gravatar">';
+//   html += '</div>';
+//   html += '<div class="pull-left meta">';
+//   html += '<div class="title h5">';
+//   html += '<a href="/users."' + userId + '">' + userName + ' commented on</a>';
+//   html += '</div>';
+//   html += '<h6 class="text-muted time">' + formattedDate + '</h6>';
+//   html += '</div>';
+//   html += '</div>';
+//   html += '<br>';
+//   html += '<div class="post-description">';
+//   html += '<p>' + commentContent + '</p>';
+//   html += '</div>';
+//   html += '</div>';
+//   html += '</div>';
+//   html += '</div>';
+//   return html;
+// }
 
 
 

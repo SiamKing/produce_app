@@ -42,10 +42,7 @@ function juiceAJAX(id, element) {
     $('.comments').empty();
     $('#comment_juice_id').val(juice.id);
     $.each(juice.comments, function(index, comment) {
-      var html = commentAppend(comment);
-      $('.comments').append(html);
-      $('.comment-area').val('');
-      $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment');
+      Comment.success(comment);
     });
     $('.jumbo-header').text(juice.name);
     $('.juice-produce').empty();
