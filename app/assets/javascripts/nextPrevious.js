@@ -55,6 +55,13 @@ function juiceAJAX(id, element) {
     $('.deleteJuice').attr('href', '/juices/' + juice.id);
     $('.js-previous').attr("data-id", juice["id"]);
     $('.js-next').attr('data-id', juice["id"]);
+    console.log(juice);
+    $('.comments').empty();
+    if (juice.comments !== []) {
+      $.each(juice.comments, function(index, comment) {
+        commentAppend(comment);
+      });
+    }
     if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
       $('.js-next').hide();
     }
