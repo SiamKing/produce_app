@@ -41,14 +41,13 @@ function juiceAJAX(id, element) {
     var juice = data
     console.log(juice)
     $('.comments').empty();
-    // if (juice.comments !== []) {
-      $.each(juice.comments, function(index, comment) {
-        var html = commentAppend(comment);
-        $('.comments').append(html);
-        $('.comment-area').val('');
-        $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment');
-      });
-    // }
+    $('#comment_juice_id').val(juice.id);
+    $.each(juice.comments, function(index, comment) {
+      var html = commentAppend(comment);
+      $('.comments').append(html);
+      $('.comment-area').val('');
+      $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment');
+    });
     $('.jumbo-header').text(juice.name);
     $('.juice-produce').empty();
     $.each(juice.juice_produce, function(index, jp) {
