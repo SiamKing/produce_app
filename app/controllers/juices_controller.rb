@@ -35,7 +35,7 @@ class JuicesController < ApplicationController
     @comment = Comment.new
     respond_to do |f|
       f.html { render :show }
-      f.json { render json: @juice }
+      f.json { render json: @juice, include: ['comments', 'comments.user', 'juice_produce', 'produce'] }
     end
   end
 

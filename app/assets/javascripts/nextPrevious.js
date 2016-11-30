@@ -39,9 +39,20 @@ function next() {
 function juiceAJAX(id, element) {
   $.get('/juices/' + id + ".json", function(data) {
     var juice = data
+    console.log(juice)
+    $('.comments').empty();
+    // if (juice.comments !== []) {
+      $.each(juice.comments, function(index, comment) {
+        var html = commentAppend(comment);
+        $('.comments').append(html);
+        $('.comment-area').val('');
+        $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment');
+      });
+    // }
     $('.jumbo-header').text(juice.name);
     $('.juice-produce').empty();
     $.each(juice.juice_produce, function(index, jp) {
+      console.log(jp)
       var content = '<div class="col-xs-4 col-centered">';
       content += '<h3 align="center" class="produceQuantity">' + jp.quantity + " " + juice.produce[index].name + '</h3>';
       content += '<div class="produce-index-img text-center">';
@@ -55,13 +66,7 @@ function juiceAJAX(id, element) {
     $('.deleteJuice').attr('href', '/juices/' + juice.id);
     $('.js-previous').attr("data-id", juice["id"]);
     $('.js-next').attr('data-id', juice["id"]);
-    console.log(juice);
-    $('.comments').empty();
-    if (juice.comments !== []) {
-      $.each(juice.comments, function(index, comment) {
-        commentAppend(comment);
-      });
-    }
+
     if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
       $('.js-next').hide();
     }

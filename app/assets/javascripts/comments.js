@@ -15,7 +15,6 @@ function comment() {
 
 function commentAppend(data) {
   var comment = data;
-  console.log(comment);
   var commentDate = new Date(comment.created_at);
   var month = ["Jan", "Feb", "March", "April", "May", "June",
   "July", "Aug", "Sept", "Oct", "Nov", "Dec"][commentDate.getMonth()];
