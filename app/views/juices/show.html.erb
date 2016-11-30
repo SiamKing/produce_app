@@ -64,7 +64,28 @@
   </div>
 </div>
 
-<script id="template" type="text/x-handlebars-template">
+<script id="comment-template" type="text/x-handlebars-template">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="panel panel-white post panel-shadow">
+        <div class="post-heading">
+          <div class="pull-left image">
+            <img src="{{email}}" class="img-circle avatar" alt="Gravatar">
+          </div>
+          <div class="pull-left meta">
+            <div class="title h5">
+              <a href="/users.{{userId}}"> {{userName}}  commented on</a>
+            </div>
+            <h6 class="text-muted time">{{formattedDate}}</h6>
+          </div>
+        </div>
+        <br>
+        <div class="post-description">
+          <p>{{commentContent}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </script>
 
