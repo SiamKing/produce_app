@@ -1,14 +1,25 @@
 function comment() {
   $('form').on('submit', function(e) {
     e.preventDefault();
-    var values = $(this).serialize();
-    var commentPost = $.post('/comments', values);
+    var $form = $(this);
+    var action = $form.attr("action")
+    var values = $form.serialize();
+    // var commentPost = $.post(action, values);
 
-    commentPost.done(function(data) {
+    $.ajax({
+      url: action,
+      data: values,
+      dataType: "json",
+      method: "POST"
+    })
+    .success(function(data) {
       var html = commentAppend(data);
       $('.comments').append(html);
       $('.comment-area').val('');
       $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment')
+    })
+    .error(function(response) {
+      console.log(response);
     });
   });
 }

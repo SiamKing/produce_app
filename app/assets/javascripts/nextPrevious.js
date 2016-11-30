@@ -39,7 +39,6 @@ function next() {
 function juiceAJAX(id, element) {
   $.get('/juices/' + id + ".json", function(data) {
     var juice = data
-    console.log(juice)
     $('.comments').empty();
     $('#comment_juice_id').val(juice.id);
     $.each(juice.comments, function(index, comment) {
@@ -51,7 +50,6 @@ function juiceAJAX(id, element) {
     $('.jumbo-header').text(juice.name);
     $('.juice-produce').empty();
     $.each(juice.juice_produce, function(index, jp) {
-      console.log(jp)
       var content = '<div class="col-xs-4 col-centered">';
       content += '<h3 align="center" class="produceQuantity">' + jp.quantity + " " + juice.produce[index].name + '</h3>';
       content += '<div class="produce-index-img text-center">';
