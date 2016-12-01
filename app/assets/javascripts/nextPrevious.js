@@ -1,6 +1,7 @@
 function previous() {
   $('.js-previous').on('click', function(e) {
     e.preventDefault();
+    alertClear();
     $('.js-next').show();
     if ($('.js-previous').attr("data-id") === "1") {
       $('.js-previous').hide();
@@ -20,6 +21,7 @@ function previous() {
 function next() {
   $('.js-next').on('click', function(e) {
     e.preventDefault();
+    alertClear();
     $('.js-previous').show();
     if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
       $('.js-next').hide();
@@ -34,6 +36,10 @@ function next() {
       }
     }
   });
+}
+
+function alertClear() {
+  $(".alert").empty().attr("class", "");
 }
 
 function juiceAJAX(id, element) {
