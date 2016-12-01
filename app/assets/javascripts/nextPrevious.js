@@ -3,19 +3,9 @@ function previous() {
     e.preventDefault();
     alertClear();
     $('.js-next').show();
-    if ($('.js-previous').attr("data-id") === "1") {
-      $('.js-previous').hide();
-      alert("That is the first item...click next to go the other way");
-    } else {
-      $('.js-previous').show();
-      var element = this;
-      var id = $('.js-previous').attr("data-id") - 1;
-      if ($(this).html() === "Previous Juice") {
-        juiceAJAX(id, element);
-      } else {
-        produceAJAX(id, element);
-      }
-    }
+    var id = $('.js-previous').attr("data-id") - 1;
+    var element = this;
+    juiceOrProduce(id, element)
   });
 }
 
@@ -24,19 +14,25 @@ function next() {
     e.preventDefault();
     alertClear();
     $('.js-previous').show();
-    if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
-      $('.js-next').hide();
-      alert("That was the final item...please click previous to go the other way");
-    } else {
-      var element = this;
-      var id = parseInt($('.js-next').attr("data-id")) + 1;
-      if ($(this).html() ==="Next Juice") {
-        juiceAJAX(id, element);
-      } else {
-        produceAJAX(id, element);
-      }
-    }
+    var element = this;
+    var id = parseInt($(element).attr("data-id")) + 1;
+    juiceOrProduce(id, element);
   });
+}
+
+function juiceOrProduce(id, element) {
+  var element = element;
+  var id = id;
+  if (id === $(element).attr("last-id") || id <= 0) {
+    $(element).hide();
+    alert("That was the final item...please the other way");
+  } else {
+    if ($(element).html() === "Next Juice" || $(element).html() === "Previous Juice") {
+      juiceAJAX(id, element);
+    } else {
+      produceAJAX(id, element);
+    }
+  }
 }
 
 function alertClear() {
