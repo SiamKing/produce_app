@@ -78,6 +78,14 @@ function juiceAJAX(id, element) {
   });
 }
 
+function Produce(attributes) {
+  this.name = attributes.name;
+  this.id = attributes.id;
+  this.image = attributes.image.image.large.url;
+  this.content = attributes.content;
+  this.shelf_life = attributes.expires_in;
+}
+
 function produceAJAX(id, element) {
   $.get('/produce/' + id + ".json", function(data) {
     var produce = data;
