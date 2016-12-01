@@ -20,14 +20,12 @@
               <input class="btn btn-default" type="submit" value="Add to fridge"/>
             </form>
 
-            <!-- <%= button_to "Add to fridge", user_produce_index_path(@produce), class: "btn btn-default" %> -->
           </div>
           <div class="col-xs-6">
             <h4 align="center"><a class="editProduce" href="/produce/<%= @produce.id %>/edit">Edit</a></h4>
           </div>
           <div class="col-xs-3">
             <h4 align="right" ><a class="juiceLink" href="/produce/<%= @produce.id %>/juices">Juices with <%= @produce.name %></a></h4>
-            <!-- <%= link_to "Juices with #{@produce.name}", produce_juices_path(@produce) %> -->
           </div>
         </div>
       </div>

@@ -10,7 +10,7 @@ function Comment(attributes) {
   this.formattedDate = commentDate(attributes.created_at)
 }
 
-Comment.ready = function(e) {
+Comment.ready = function() {
   Comment.templateSource = $("#comment-template").html();
   Comment.template = Handlebars.compile(Comment.templateSource);
   Comment.formSubmitListener();
