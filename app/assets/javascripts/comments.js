@@ -1,13 +1,9 @@
-$(function() {
-  Comment.ready();
-});
-
 function Comment(attributes) {
   this.userName = attributes.user.name;
   this.userId = attributes.user_id;
   this.commentContent = attributes.content;
   this.email = MD5(attributes.user.email);
-  this.formattedDate = commentDate(attributes.created_at)
+  this.formattedDate = commentDate(attributes.created_at);
 }
 
 Comment.ready = function() {

@@ -1,5 +1,5 @@
 function previous() {
-  $('.js-previous').on('click', function(e) {
+  $('body').on('click', '.js-previous', function(e) {
     e.preventDefault();
     alertClear();
     $('.js-next').show();
@@ -10,7 +10,7 @@ function previous() {
       $('.js-previous').show();
       var element = this;
       var id = $('.js-previous').attr("data-id") - 1;
-      if ($(this).html() === "Previous Juice" || $(this).html() ==="Next Juice") {
+      if ($(this).html() === "Previous Juice") {
         juiceAJAX(id, element);
       } else {
         produceAJAX(id, element);
@@ -18,8 +18,9 @@ function previous() {
     }
   });
 }
+
 function next() {
-  $('.js-next').on('click', function(e) {
+  $('body').on('click', '.js-next', function(e) {
     e.preventDefault();
     alertClear();
     $('.js-previous').show();
@@ -29,7 +30,7 @@ function next() {
     } else {
       var element = this;
       var id = parseInt($('.js-next').attr("data-id")) + 1;
-      if ($(this).html() === "Previous Juice" || $(this).html() ==="Next Juice") {
+      if ($(this).html() ==="Next Juice") {
         juiceAJAX(id, element);
       } else {
         produceAJAX(id, element);
@@ -83,31 +84,50 @@ function Produce(attributes) {
   this.id = attributes.id;
   this.image = attributes.image.image.large.url;
   this.content = attributes.content;
-  this.shelf_life = attributes.expires_in;
+  this.shelfLife = attributes.expires_in;
+}
+
+Produce.prototype.renderHTML = function() {
+  return Produce.template(this);
 }
 
 function produceAJAX(id, element) {
-  $.get('/produce/' + id + ".json", function(data) {
-    var produce = data;
-    $('.produceName').text(produce["name"]);
-    $('img').attr("src", produce["image"]["image"]["large"]["url"]);
-    $('.produceContent').text(produce["content"]);
-    $('#expiresIn').text("Shelf life is usually about " + produce["expires_in"] + " days.");
-    $('.addFridge').attr('action', "/user_produce." + id);
-    $('.editProduce').attr('href', '/produce/' + produce["id"] + '/edit');
-    $('.juiceLink').attr("href", "/produce/" + produce["id"] + "/juices").text("Juices with " + produce["name"]);
-    $('.js-previous').attr("data-id", produce["id"]);
-    $('.js-next').attr('data-id', produce["id"]);
-    if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
-      $('.js-next').hide();
-    }
-    if ($('.js-previous').attr("data-id") === "1") {
-      $('.js-previous').hide();
-    }
-  }).fail(function(error) {
-    thereIsAnError(id, element);
-  });
+  $.get('/produce/' + id + ".json", function(json) {
+    Produce.templateSource = $("#nextPrev-template").html();
+    Produce.template = Handlebars.compile(Produce.templateSource);
+    $('.produceBody').html('');
+    var produce = new Produce(json);
+    var produceHTML = produce.renderHTML();
+
+    $('.produceBody').html(produceHTML);
+  })
+  .fail(function(error) {
+      thereIsAnError(id, element);
+    });
 }
+
+// function produceAJAX(id, element) {
+//   $.get('/produce/' + id + ".json", function(data) {
+//     var produce = data;
+//     $('.produceName').text(produce["name"]);
+//     $('img').attr("src", produce["image"]["image"]["large"]["url"]);
+//     $('.produceContent').text(produce["content"]);
+//     $('#expiresIn').text("Shelf life is usually about " + produce["expires_in"] + " days.");
+//     $('.addFridge').attr('action', "/user_produce." + id);
+//     $('.editProduce').attr('href', '/produce/' + produce["id"] + '/edit');
+//     $('.juiceLink').attr("href", "/produce/" + produce["id"] + "/juices").text("Juices with " + produce["name"]);
+//     $('.js-previous').attr("data-id", produce["id"]);
+//     $('.js-next').attr('data-id', produce["id"]);
+//     if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
+//       $('.js-next').hide();
+//     }
+//     if ($('.js-previous').attr("data-id") === "1") {
+//       $('.js-previous').hide();
+//     }
+//   }).fail(function(error) {
+//     thereIsAnError(id, element);
+//   });
+// }
 
 function thereIsAnError(id, element) {
   if (element.className === "js-next") {
