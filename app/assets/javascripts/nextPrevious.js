@@ -47,24 +47,40 @@ function juiceAJAX(id, element) {
     $.each(juice.comments, function(index, comment) {
       Comment.success(comment);
     });
-    Juice.templateSource = $("#juice-template").html();
-    Juice.template = Handlebars.compile(Juice.templateSource);
-    $('.juice-show').html('');
-    var juice = new Juice(json);
-    var juiceHTML = juice.renderHTML();
 
-    $('.juice-show').html(juiceHTML);
-    $.each(juice.juice_produce, function(index, juice_produce) {
-      JuiceProduce.templateSource = $("#juice-produce-template").html();
-      JuiceProduce.template = Handlebars.compile(JuiceProduce.templateSource);
-      var juiceProduce = new JuiceProduce(json);
-      var juiceProduceHTML = juiceProduce.renderHTML();
-      $('.juice-produce').append(juiceProduceHTML);
-    })
+    // Juice.templateSource = $("#juice-template").html();
+    // Juice.template = Handlebars.compile(Juice.templateSource);
+    // $('.juice-show').html('');
+    // var juices = new Juice(juice);
+    // var juicesHTML = juices.renderHTML();
+    // $('.juice-show').html(juicesHTML);
+    $('.jumbotron-juice').html('');
+    Juice.templateSource = $("#jumbotron-template").html();
+    Juice.template = Handlebars.compile(Juice.templateSource);
+    var juices = new Juice(juice);
+    var juicesHTML = juices.renderHTML();
+    $('.jumbotron-juice').html(juicesHTML);
+
+    // // $.each(juice.juice_produce, function(index, juice_produce) {
+    // //   JuiceProduce.templateSource = $("#juice-produce-template").html();
+    // //   JuiceProduce.template = Handlebars.compile(JuiceProduce.templateSource);
+    // //   var juiceProduce = new JuiceProduce(juice_produce);
+    // //   var juiceProduceHTML = juiceProduce.renderHTML();
+    // //
+    // //   $('.juice-produce').append(juiceProduceHTML);
+    // })
 
   }).fail(function(error) {
     thereIsAnError(id, element);
   });
+}
+
+Juice.prototype.renderHTML = function() {
+  return Juice.template(this);
+}
+
+JuiceProduce.prototype.renderHTML = function() {
+  return JuiceProduce.template(this);
 }
 
 function Juice(attr) {
@@ -75,12 +91,11 @@ function Juice(attr) {
 
 function JuiceProduce(attr) {
   this.quantity = attr.quantity;
-}
-
-function ProduceForJuice(attr) {
   this.produceName = attr.name;
   this.image = attr.image.image.thumb.url;
+  this.ProduceId = attr.id
 }
+
 // function juiceAJAX(id, element) {
 //   $.get('/juices/' + id + ".json", function(data) {
 //     var juice = data
