@@ -66,7 +66,7 @@
   </div>
 </div>
 
-<script id="jumbotron-template" type="text/x-handlebars-template">
+<script id="juice-produce-template" type="text/x-handlebars-template">
   <div class="jumbotron jumbotron-juice">
     <div class="img"></div>
     <div class="container">
@@ -79,46 +79,39 @@
   </div>
 </script>
 <hr>
-<script id="juice-produce-template" type="text/x-handlebars-template">
-  <div class="container juice-produce">
-    <div class="row row-centered">
-      <h2 align="center">Ingredients</h2>
-      <div class="col-xs-8 col-md-8 col-md-offset-2 juice-produce">
-        <div class="col-xs-4 col-centered">
-          <h3 align="center" class="produceQuantity">{{quantity}} {{produceName}}</h3>
-          <div class="produce-index-img text-center">
-            <a href="/produce/{{produceId}}"><img src="{{imageThumb}}" alt="" /></a>
-          </div>
+<div class="container juice-produce">
+  <div class="row row-centered">
+    <h2 align="center">Ingredients</h2>
+    <div class="col-xs-8 col-md-8 col-md-offset-2">
+      <div class="col-xs-4 col-centered">
+        <h3 align="center" class="produceQuantity">{{quantity}} {{debug}}{{produceName}}</h3>
+        <div class="produce-index-img text-center">
+          <a href="/produce/{{produceId}}"><img src="{{imageThumb}}" alt="" /></a>
         </div>
       </div>
     </div>
   </div>
-</script>
-
-<script id="juice-links-template" type="text/x-handlebars-template">
-  <div class="row juice-links">
-    <div class="col-xs-6 col-md-6 col-md-offset-3">
-      <div class="col-xs-4">
-        <h4 align="left"><a class="editJuice" href="/juices/{{id}}/edit">Edit Juice</a></h4>
-      </div>
-      <div class="col-xs-4">
-      </div>
-      <div class="col-xs-4">
-        <p align="right"><a class="userJuice" href="/users/{{userId}}/juices">Created by Micah</a></p>
-      </div>
+</div>
+<div class="row juice-links">
+  <div class="col-xs-6 col-md-6 col-md-offset-3">
+    <div class="col-xs-4">
+      <h4 align="left"><a class="editJuice" href="/juices/{{id}}/edit">Edit Juice</a></h4>
+    </div>
+    <div class="col-xs-4">
+    </div>
+    <div class="col-xs-4">
+      <p align="right"><a class="userJuice" href="/users/{{userId}}/juices">Created by Micah</a></p>
     </div>
   </div>
-</script>
-
-<script id="prev-next-template" type="text/x-handlebars-template">
-  <div class="row prev-next">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="col-md-4 col-md-offset-4" align="center">
-        <a href="#" class="js-previous" data-id="{{id}}">Previous Juice</a>
-        ------<a href="#" class="js-next" data-id="{{id}}" last-id="<%= @last_juice_id %>">Next Juice</a>
-      </div>
+</div>
+<div class="row prev-next">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-4 col-md-offset-4" align="center">
+      <a href="#" class="js-previous" data-id="{{id}}">Previous Juice</a>
+      ------<a href="#" class="js-next" data-id="{{id}}" last-id="<%= @last_juice_id %>">Next Juice</a>
     </div>
   </div>
+</div>
 </script>
 
 <script id="comment-template" type="text/x-handlebars-template">

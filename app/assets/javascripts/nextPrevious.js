@@ -59,16 +59,16 @@ function juiceAJAX(id, element) {
     Juice.template = Handlebars.compile(Juice.templateSource);
     var juices = new Juice(juice);
     var juicesHTML = juices.renderHTML();
-    $('.jumbotron-juice').html(juicesHTML);
+    $('.juice-show').html(juicesHTML);
 
-    // // $.each(juice.juice_produce, function(index, juice_produce) {
-    // //   JuiceProduce.templateSource = $("#juice-produce-template").html();
-    // //   JuiceProduce.template = Handlebars.compile(JuiceProduce.templateSource);
-    // //   var juiceProduce = new JuiceProduce(juice_produce);
-    // //   var juiceProduceHTML = juiceProduce.renderHTML();
-    // //
-    // //   $('.juice-produce').append(juiceProduceHTML);
-    // })
+    $.each(juice.produce, function(index, juice_produce) {
+      JuiceProduce.templateSource = $("#juice-produce-template").html();
+      JuiceProduce.template = Handlebars.compile(JuiceProduce.templateSource);
+      var juiceProduce = new JuiceProduce(juice_produce);
+      var juiceProduceHTML = juiceProduce.renderHTML();
+
+      $('.juice-produce').append(juiceProduceHTML);
+    });
 
   }).fail(function(error) {
     thereIsAnError(id, element);
@@ -90,11 +90,23 @@ function Juice(attr) {
 }
 
 function JuiceProduce(attr) {
-  this.quantity = attr.quantity;
+  // this.quantity = attr.quantity;
   this.produceName = attr.name;
   this.image = attr.image.image.thumb.url;
   this.ProduceId = attr.id
 }
+
+Handlebars.registerHelper("debug", function(optionalValue) {
+  console.log("Current Context");
+  console.log("====================");
+  console.log(this);
+
+  if (optionalValue) {
+    console.log("Value");
+    console.log("====================");
+    console.log(optionalValue);
+  }
+});
 
 // function juiceAJAX(id, element) {
 //   $.get('/juices/' + id + ".json", function(data) {
