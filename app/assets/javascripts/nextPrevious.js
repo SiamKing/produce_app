@@ -42,20 +42,8 @@ function alertClear() {
 function juiceAJAX(id, element) {
   $.get('/juices/' + id + ".json", function(data) {
     var juice = data
+    Juice.getAjax(juice);
 
-
-    // Juice.templateSource = $("#juice-template").html();
-    // Juice.template = Handlebars.compile(Juice.templateSource);
-    // $('.juice-show').html('');
-    // var juices = new Juice(juice);
-    // var juicesHTML = juices.renderHTML();
-    // $('.juice-show').html(juicesHTML);
-    $('.juice-show').html('');
-    Juice.templateSource = $("#juice-produce-template").html();
-    Juice.template = Handlebars.compile(Juice.templateSource);
-    var juices = new Juice(juice);
-    var juicesHTML = juices.renderHTML();
-    $('.juice-show').html(juicesHTML);
 
     $('.comments').empty();
     $('#comment_juice_id').val(juice.id);
@@ -65,6 +53,15 @@ function juiceAJAX(id, element) {
   }).fail(function(error) {
     thereIsAnError(id, element);
   });
+}
+
+Juice.getAjax  = function(juice) {
+  $('.juice-show').html('');
+  Juice.templateSource = $("#juice-produce-template").html();
+  Juice.template = Handlebars.compile(Juice.templateSource);
+  var juices = new Juice(juice);
+  var juicesHTML = juices.renderHTML();
+  $('.juice-show').html(juicesHTML);
 }
 
 Juice.prototype.renderHTML = function() {
@@ -99,42 +96,6 @@ Handlebars.registerHelper("debug", function(optionalValue) {
     console.log(optionalValue);
   }
 });
-
-// function juiceAJAX(id, element) {
-//   $.get('/juices/' + id + ".json", function(data) {
-//     var juice = data
-//     $('.comments').empty();
-//     $('#comment_juice_id').val(juice.id);
-//     $.each(juice.comments, function(index, comment) {
-//       Comment.success(comment);
-//     });
-//     $('.jumbo-header').text(juice.name);
-//     $('.juice-produce').empty();
-//     $.each(juice.juice_produce, function(index, jp) {
-//       var content = '<div class="col-xs-4 col-centered">';
-//       content += '<h3 align="center" class="produceQuantity">' + jp.quantity + " " + juice.produce[index].name + '</h3>';
-//       content += '<div class="produce-index-img text-center">';
-//       content += '<a href="/produce/' + juice.produce[index].id + '"><img src=' + juice.produce[index].image.image.thumb.url + '></a>';
-//       content += '</div>';
-//       content += '</div>';
-//       $('.juice-produce').append(content);
-//     });
-//     $('.editJuice').attr('href', "/juices/" + juice.id + "/edit");
-//     $('.userJuice').attr('href', "/users/" + juice.user_id + "/juices").text("Created by " + juice.user.name);
-//     $('.deleteJuice').attr('href', '/juices/' + juice.id);
-//     $('.js-previous').attr("data-id", juice["id"]);
-//     $('.js-next').attr('data-id', juice["id"]);
-//
-//     if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
-//       $('.js-next').hide();
-//     }
-//     if ($('.js-previous').attr("data-id") === "1") {
-//       $('.js-previous').hide();
-//     }
-//   }).fail(function(error) {
-//     thereIsAnError(id, element);
-//   });
-// }
 
 function Produce(attributes) {
   this.name = attributes.name;
@@ -174,3 +135,39 @@ function thereIsAnError(id, element) {
     alert("Sorry...that item does not exist");
   }
 }
+
+// function juiceAJAX(id, element) {
+//   $.get('/juices/' + id + ".json", function(data) {
+//     var juice = data
+//     $('.comments').empty();
+//     $('#comment_juice_id').val(juice.id);
+//     $.each(juice.comments, function(index, comment) {
+//       Comment.success(comment);
+//     });
+//     $('.jumbo-header').text(juice.name);
+//     $('.juice-produce').empty();
+//     $.each(juice.juice_produce, function(index, jp) {
+//       var content = '<div class="col-xs-4 col-centered">';
+//       content += '<h3 align="center" class="produceQuantity">' + jp.quantity + " " + juice.produce[index].name + '</h3>';
+//       content += '<div class="produce-index-img text-center">';
+//       content += '<a href="/produce/' + juice.produce[index].id + '"><img src=' + juice.produce[index].image.image.thumb.url + '></a>';
+//       content += '</div>';
+//       content += '</div>';
+//       $('.juice-produce').append(content);
+//     });
+//     $('.editJuice').attr('href', "/juices/" + juice.id + "/edit");
+//     $('.userJuice').attr('href', "/users/" + juice.user_id + "/juices").text("Created by " + juice.user.name);
+//     $('.deleteJuice').attr('href', '/juices/' + juice.id);
+//     $('.js-previous').attr("data-id", juice["id"]);
+//     $('.js-next').attr('data-id', juice["id"]);
+//
+//     if ($('.js-next').attr("data-id") === $('.js-next').attr("last-id")) {
+//       $('.js-next').hide();
+//     }
+//     if ($('.js-previous').attr("data-id") === "1") {
+//       $('.js-previous').hide();
+//     }
+//   }).fail(function(error) {
+//     thereIsAnError(id, element);
+//   });
+// }
