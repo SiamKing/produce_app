@@ -23,9 +23,9 @@ function next() {
 function juiceOrProduce(id, element) {
   var element = element;
   var id = id;
-  if (id === $(element).attr("last-id") || id <= 0) {
+  if (id - 1 === parseInt($(element).attr("last-id") ) || id <= 0) {
     $(element).hide();
-    alert("That was the final item...please the other way");
+    alert("That was the last item...");
   } else {
     if ($(element).html() === "Next Juice" || $(element).html() === "Previous Juice") {
       juiceAJAX(id, element);
