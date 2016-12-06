@@ -5,9 +5,7 @@ class CommentsController < ApplicationController
     if @comment.save
       render json: @comment, status: 201
     else
-      # respond_to do |format|
-      #   format.js { flash.now[:alert] = "Please fill in comment box" }
-      # end
+      render json: @comment.errors
     end
   end
 

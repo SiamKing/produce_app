@@ -50,12 +50,13 @@
 <div class="container">
   <div class="row js-commentForm">
     <div class="col-sm-8 col-sm-offset-2">
-      <%= form_for @comment do |f| %>
+      <%= bootstrap_form_for(@comment, label_errors: true) do |f| %>
+      <ul class="error"></ul>
       <%= f.hidden_field :juice_id, value: @juice.id %>
       <%= f.hidden_field :user_id, value: current_user.id %>
       <div class="col-sm-12">
         <div class="col-sm-9">
-          <%= f.text_area :content, placeholder: "Your Comment", class: "panel panel-white post panel-shadow comment-area" %>
+          <%= f.text_area :content, hide_label: true, placeholder: "Your Comment", class: "panel panel-white post panel-shadow comment-area" %>
         </div>
         <div class="col-sm-2">
           <%= f.submit class: 'btn btn-default js-formSubmit' %>

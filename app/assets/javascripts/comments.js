@@ -25,7 +25,8 @@ Comment.success = function(data) {
 }
 
 Comment.error = function(error) {
-  console.log(error);
+  $('.js-formSubmit').removeAttr('disabled').attr('value', 'Create Comment');
+  $(".alert").attr("class", "alert").val("There was an error, please try again");
 }
 
 Comment.formSubmitListener = function() {
@@ -35,16 +36,22 @@ Comment.formSubmitListener = function() {
 Comment.formSubmit = function(e) {
   e.preventDefault();
   var $form = $(this);
-  var action = $form.attr("action")
-  var values = $form.serialize();
-  $.ajax({
-    url: action,
-    data: values,
-    dataType: "json",
-    method: "POST"
-  })
-  .success(Comment.success)
-  .error(Comment.error)
+  $form.find(".error").html("");
+  if ($('.comment-area').val() === '') {
+    $form.find('.js-formSubmit').removeAttr('data-disable-with');
+    $form.find(".error").html("Please make a comment");
+  } else {
+    var action = $form.attr("action")
+    var values = $form.serialize();
+    $.ajax({
+      url: action,
+      data: values,
+      dataType: "json",
+      method: "POST"
+    })
+    .success(Comment.success)
+    .error(Comment.error)
+  }
 }
 
 function commentDate(date) {

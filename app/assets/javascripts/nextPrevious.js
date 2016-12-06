@@ -42,9 +42,7 @@ function alertClear() {
 function juiceAJAX(id, element) {
   $.get('/juices/' + id + ".json", function(data) {
     var juice = data
-    console.log(juice)
     Juice.getAjax(juice);
-
 
     $('.comments').empty();
     $('#comment_juice_id').val(juice.id);
@@ -73,7 +71,7 @@ function Juice(attr) {
   this.name = attr.name;
   this.id = attr.id;
   this.userId = attr.user_id;
-  this.userName = attr.user.name
+  this.userName = attr.user.name;
   this.juiceProduce = attr.produce.map(function(prod, index) {
                           var produce = {
                             id: prod.id,
