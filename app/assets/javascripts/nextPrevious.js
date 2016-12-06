@@ -42,6 +42,7 @@ function alertClear() {
 function juiceAJAX(id, element) {
   $.get('/juices/' + id + ".json", function(data) {
     var juice = data
+    console.log(juice)
     Juice.getAjax(juice);
 
 
@@ -78,6 +79,7 @@ function Juice(attr) {
                             id: prod.id,
                             name: prod.name,
                             image: prod.image.image.thumb.url,
+                            alt: prod.image.name,
                             quantity: attr.juice_produce[index].quantity
                           }
                           return produce
