@@ -85,18 +85,6 @@ function Juice(attr) {
 
 }
 
-Handlebars.registerHelper("debug", function(optionalValue) {
-  console.log("Current Context");
-  console.log("====================");
-  console.log(this);
-
-  if (optionalValue) {
-    console.log("Value");
-    console.log("====================");
-    console.log(optionalValue);
-  }
-});
-
 function Produce(attributes) {
   this.name = attributes.name;
   this.id = attributes.id;
@@ -135,6 +123,19 @@ function thereIsAnError(id, element) {
     alert("Sorry...that item does not exist");
   }
 }
+
+
+Handlebars.registerHelper("debug", function(optionalValue) {
+  console.log("Current Context");
+  console.log("====================");
+  console.log(this);
+
+  if (optionalValue) {
+    console.log("Value");
+    console.log("====================");
+    console.log(optionalValue);
+  }
+});
 
 // function juiceAJAX(id, element) {
 //   $.get('/juices/' + id + ".json", function(data) {
