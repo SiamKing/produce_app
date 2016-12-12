@@ -16,7 +16,7 @@ function Juice(attr) {
 
 }
 
-Juice.getAjax  = function(juice) {
+Juice.format  = function(juice) {
   $('.juice-show').html('');
   Juice.templateSource = $("#juice-produce-template").html();
   Juice.template = Handlebars.compile(Juice.templateSource);
@@ -31,8 +31,8 @@ Juice.prototype.renderHTML = function() {
 
 function juiceAJAX(id, element) {
   $.get('/juices/' + id + ".json", function(data) {
-    var juice = data
-    Juice.getAjax(juice);
+    var juice = data;
+    Juice.format(juice);
 
     $('.comments').empty();
     $('#comment_juice_id').val(juice.id);
