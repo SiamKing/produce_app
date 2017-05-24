@@ -3,14 +3,14 @@
   <div class="container juice-produce">
     <div class="row row-centered">
       <h2 align="center">Ingredients</h2>
-      <div class="col-xs-8 col-md-8 col-md-offset-2 juice-produce">
+      <div class="col-xs-8 col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 juice-produce">
         <% @juice_produce.each do |juice_prod| %>
-        <div class="col-xs-4 col-centered">
-          <h3 align="center" class="produceQuantity"><%= juice_prod.quantity %> <%= juice_prod.produce.name %></h3>
-          <div class="produce-index-img text-center">
-            <%= link_to image_tag(juice_prod.produce.image.thumb.url), produce_path(juice_prod.produce) %>
+          <div class="col-xs-4 col-sm-4 col-md-4 col-centered">
+            <h3 align="center" class="produceQuantity"><%= juice_prod.quantity %> <%= juice_prod.produce.name %></h3>
+            <div class="produce-index-img text-center">
+              <%= link_to image_tag(juice_prod.produce.image.thumb.url), produce_path(juice_prod.produce) %>
+            </div>
           </div>
-        </div>
         <% end %>
       </div>
     </div>

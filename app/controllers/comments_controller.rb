@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     if @comment.save
       render json: @comment, status: 201
     else
-      render json: @comment.errors
+      render json: { errors: @comment.errors.full_messages }
     end
   end
 

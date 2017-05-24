@@ -3,16 +3,15 @@ function Juice(attr) {
   this.id = attr.id;
   this.userId = attr.user_id;
   this.userName = attr.user.name;
-  this.juiceProduce = attr.produce.map(function(prod, index) {
-                          var produce = {
-                            id: prod.id,
-                            name: prod.name,
-                            image: prod.image.image.thumb.url,
-                            alt: prod.image.name,
-                            quantity: attr.juice_produce[index].quantity
-                          }
-                          return produce
-                       });
+  this.juiceProduce = attr.produce.map(function(item, index) {
+      return {
+        id: item.id,
+        name: item.name,
+        image: item.image.image.thumb.url,
+        alt: item.image.name,
+        quantity: attr.juice_produce[index].quantity
+      }
+   });
 
 }
 
