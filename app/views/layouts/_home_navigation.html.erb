@@ -1,0 +1,5 @@
+<% if current_user.nil? %>
+  <%= link_to "Wilt No More", welcome_path, class: 'navbar-brand' %>
+<% else %>
+  <%= link_to "Wilt No More", user_produce_path(current_user), class: 'navbar-brand' %>
+<% end %>
