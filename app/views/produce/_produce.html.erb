@@ -1,7 +1,7 @@
 <% produce.each do |produce| %>
 <div clas="row">
-  <div class="col-md-6 text-center">
-    <h2 align='center'><%= produce.name %></h2>
+  <div class="col-md-6 text-center produce-card">
+    <h3 align='center'><%= produce.name %></h3>
     <div class="produce-index-img text-center">
       <%= link_to image_tag(produce.image.thumb.url), produce_path(produce) %>
     </div>

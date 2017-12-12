@@ -12,7 +12,8 @@
 body {
   padding-top: 70px;
   padding-bottom: 30px;
-  font-family: 'News Cycle', serif;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
   // font-size: 50;
 }
 
@@ -20,6 +21,12 @@ h1 {
   font-family: 'Satisfy', cursive;
   font-size: 8rem !important;
   text-shadow: 2px 2px white;
+  color: green !important;
+}
+
+h2 {
+  font-family: 'Satisfy', cursive;
+  font-size: 6rem !important;
   color: green !important;
 }
 
@@ -47,13 +54,16 @@ a:hover {
 }
 
 .btn-green {
-  background-color: white;
+  background-color: #F9E074;
   color: green;
   font-size: 2rem;
+  padding: 10px;
+  box-shadow: 5px 5px 5px grey;
 }
 
 .btn-green:hover {
-  color: orange;
+  color: green;
+  background-color: #F9F080;
 }
 
 .btn-primary {
@@ -122,14 +132,6 @@ aside {
   z-index:1;
 }
 
-.produce-img {
-  height: 120px;
-  padding-bottom: 50px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .gravatar {
   float: left;
   margin-right: 10px;
@@ -141,12 +143,25 @@ aside {
 
 /* Produce index */
 
+.produce-img {
+  height: 120px;
+  padding-bottom: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .produce-index-img {
   height: 100px;
   padding-bottom: 50px;
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.produce-card {
+  margin-top: 10px;
+  min-height: 250px;
 }
 
 /* Produce show page */
