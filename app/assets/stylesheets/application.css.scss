@@ -33,6 +33,7 @@ body {
 .btn-green {
   background-color: white;
   color: green;
+  font-size: 2rem;
 }
 
 .navbar {
@@ -51,7 +52,6 @@ body {
 }
 
 .navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
-    background-color: #FFFF00;
     color: green;
 }
 
