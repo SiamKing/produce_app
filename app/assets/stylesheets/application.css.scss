@@ -132,7 +132,11 @@ aside {
 }
 
 .info {
-  padding-top: 60px;
+  padding-top: 30px;
+}
+
+.btn-block + .btn-block {
+  margin-top: 0px !important;
 }
 
 #produce-show-img {

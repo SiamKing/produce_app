@@ -1,4 +1,4 @@
-<%= render partial: "application/jumbotron", locals: {jumbo: 'jumbotron-user', header: "Here's what's in #{current_user.name}'s fridge"} %>
+<%= render partial: "application/jumbotron", locals: {jumbo: 'jumbotron-user', header: "Here's what's in #{current_user.name}'s fridge", produce: @fruit} %>
 <div class="row">
   <div class="col-xs-6 col-md-6">
     <h1 align='center'>Fruit</h1>
