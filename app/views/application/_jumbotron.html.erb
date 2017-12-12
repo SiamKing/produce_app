@@ -5,11 +5,20 @@
       <div class="col-lg-12">
         <h1 class="jumbo-header" align="center"><%= header %></h1>
       </div>
-      <div class="col-md-6 col-md-offset-3">
-        <%= link_to "Add more produce", produce_index_path, class: 'btn btn-primary' %>
-        <%= link_to "See your faves", user_user_produce_index_path(current_user), class: 'btn btn-primary' %>
-      </div>
     </div>
+    <br> <br/>
+    <% if current_user %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="col-md-6 row-centered">
+            <%= link_to "Add more produce", produce_index_path, class: 'btn btn-primary btn-green' %>
+          </div>
+          <div class="col-md-6 row-centered">
+            <%= link_to "See your faves", user_user_produce_index_path(current_user), class: 'btn btn-primary btn-green' %>
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 <hr>

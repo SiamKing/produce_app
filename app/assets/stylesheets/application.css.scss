@@ -26,6 +26,25 @@ body {
   margin: 5px 0;
 }
 
+.btn-green {
+  background-color: green;
+}
+
+.navbar {
+  background-color: green;
+}
+
+.navbar-nav > li > a {
+  color: #fff;
+  font-size: 1.8rem;
+}
+
+.navbar-header > a {
+  color: #fff;
+  font-size: 2.6rem;
+  font-family: 'Satisfy', cursive;
+}
+
 /* sidebar */
 
 aside {
