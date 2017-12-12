@@ -16,6 +16,10 @@ body {
   // font-size: 50;
 }
 
+.container-fluid {
+  padding: 0px !important;
+}
+
 .theme-dropdown .dropdown-menu {
   position: static;
   display: block;
@@ -27,7 +31,8 @@ body {
 }
 
 .btn-green {
-  background-color: green;
+  background-color: white;
+  color: green;
 }
 
 .navbar {
@@ -43,6 +48,11 @@ body {
   color: #fff;
   font-size: 2.6rem;
   font-family: 'Satisfy', cursive;
+}
+
+.navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
+    background-color: #FFFF00;
+    color: green;
 }
 
 /* sidebar */
@@ -160,7 +170,7 @@ aside {
   z-index:1;
 }
 
-.jumbotron {position:relative;padding:50px;}
+.jumbotron {position:relative;}
 
 .jumbotron .container {
   z-index:2;
