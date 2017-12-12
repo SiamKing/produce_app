@@ -16,6 +16,22 @@ body {
   // font-size: 50;
 }
 
+h1 {
+  font-family: 'Satisfy', cursive;
+  font-size: 8rem !important;
+  text-shadow: 2px 2px white;
+  color: green !important;
+}
+
+a {
+  color: green;
+}
+
+a:hover {
+  color: orange;
+  text-decoration: none;
+}
+
 .container-fluid {
   padding: 0px !important;
 }
@@ -34,6 +50,14 @@ body {
   background-color: white;
   color: green;
   font-size: 2rem;
+}
+
+.btn-green:hover {
+  color: orange;
+}
+
+.btn-primary {
+  background-color: green !important;
 }
 
 .navbar {
