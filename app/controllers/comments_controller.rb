@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  layout "site"
 
   def create
     @comment = Comment.new(comment_params)

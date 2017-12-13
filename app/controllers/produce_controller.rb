@@ -1,4 +1,5 @@
 class ProduceController < ApplicationController
+  layout "site"
   include ProduceHelper
   before_action :logged_in?, except: :index
 

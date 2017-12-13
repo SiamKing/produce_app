@@ -10,11 +10,9 @@
 //   text-shadow: 2px 2px white;
 // }
 body {
-  padding-top: 70px;
-  padding-bottom: 30px;
   font-family: 'Open Sans', sans-serif;
   margin: 0;
-  // font-size: 50;
+  padding-bottom: 30px;
 }
 
 h1 {
@@ -118,6 +116,13 @@ aside {
 }
 
 /***** Welcome Page *******/
+
+.welcome-bg {
+  background: image_url("welcome_image.jpg") no-repeat center center fixed;
+	background-size: cover;
+  height: 100%;
+  width: 100%;
+}
 
 .jumbo-title {
   font-size: 30px;

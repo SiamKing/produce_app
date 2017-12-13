@@ -1,4 +1,5 @@
 class JuicesController < ApplicationController
+  layout "site"
   before_action :logged_in?
   include JuicesHelper
 

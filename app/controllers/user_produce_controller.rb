@@ -1,4 +1,5 @@
 class UserProduceController < ApplicationController
+  layout "site"
   before_action :logged_in?
 
   def show
