@@ -3,6 +3,8 @@
 @import "font-awesome";
 /*
 *= require main
+*= require_self
+*= require_tree .
 */
 
 /* Some Style from the Bootstrap Default Theme */

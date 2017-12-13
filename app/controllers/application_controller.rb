@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  add_flash_types :success, :danger, :notice, :alert, :info
 
   def welcome
     if user_signed_in?
