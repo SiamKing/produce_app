@@ -1,19 +1,16 @@
-<%= render partial: "application/jumbotron", locals: {jumbo: 'jumbotron-produce', header: "Welcome to Produce Organizer"} %>
-<div class="row">
-  <div class="container container-table">
-    <div class="row vertical-center-row">
-      <div class="col-md-11 col-md-offset-1">
-        <div class="text-center col-md-3 col-md-offset-4">
-          <h1 align="center">
-            <%= link_to "Been here before? Log In!", new_user_session_path, class: "btn btn-block btn-outline" %>
-            <%= link_to "New User? Sign up here!", new_user_registration_path, class: "btn btn-block btn-primary" %>
-            <a class="btn btn-block btn-social"  href="<%= user_facebook_omniauth_authorize_path %>">
-                <span class="fa fa-facebook"></span>Sign in with Facebook
-            </a>
-          </h1>
+<%= render partial: "application/jumbotron", locals: {jumbo: 'jumbotron-produce', header: "Wilt No More", title: "Stop throwing out your produce!", description: "Track it. Eat it. Smile."} %>
+<div class="container container-table">
+  <div class="row vertical-center-row">
+    <div class="col-md-11 col-md-offset-1">
+      <div class="text-center col-md-3 col-md-offset-4">
+        <div align="center">
+          <%= link_to "Been here before? Log In!", new_user_session_path, class: "btn btn-block btn-outline" %>
+          <%= link_to "New User? Sign up here!", new_user_registration_path, class: "btn btn-block btn-primary" %>
+          <a class="btn btn-block btn-social"  href="<%= user_facebook_omniauth_authorize_path %>">
+            <span class="fa fa-facebook"></span>Sign in with Facebook
+          </a>
         </div>
       </div>
-
     </div>
   </div>
 </div>
