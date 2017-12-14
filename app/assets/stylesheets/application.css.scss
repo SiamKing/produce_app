@@ -69,6 +69,10 @@ a:hover {
   box-shadow: 5px 5px 5px grey;
 }
 
+.btn-default {
+  color: green !important;
+}
+
 .btn-green:hover {
   color: green;
   background-color: #F9F080;
@@ -82,19 +86,45 @@ a:hover {
   background-color: green;
 }
 
+.navbar-transparent {
+  background: transparent;
+}
+
 .navbar-nav > li > a {
   color: #fff;
   font-size: 1.8rem;
 }
 
 .navbar-header > a {
+  padding-top: 20px;
   color: #fff;
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   font-family: 'Satisfy', cursive;
 }
 
 .navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
     color: green;
+}
+
+.sign-in {
+  margin-top: 100px;
+}
+
+label {
+  color: white;
+}
+
+em {
+  color: white;
+}
+
+.login-links {
+  font-size: 2rem;
+}
+
+.login-links a {
+  color: white !important;
+  margin-bottom: 6px;
 }
 
 /* sidebar */
