@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  layout "site"
+  layout "application"
   before_action :logged_in?
 
   def show
