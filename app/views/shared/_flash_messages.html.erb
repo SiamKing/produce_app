@@ -1,17 +1,18 @@
 <% if flash.present? %>
   <div id="flash">
     <script>
-      toastr.success("<%= flash[:success] %>")
       <% if flash[:success] %>
         tostr.success("<%= flash[:success] %>")
       <% end %>
-      <% if flash[:info] || flash[:notice] %>
-        toastr.info("<%= flash[:info] %>")
+      <% if flash[:info] %>
+        toastr.success("<%= flash[:info] %>")
+      <% end %>
+      <% if flash[:notice] %>
+        toastr.success("<%= flash[:notice] %>")
       <% end %>
       <% if flash[:alert] %>
         toastr.error("<%= flash[:alert] %>")
       <% end %>
-
     </script>
   </div>
 <% end %>
