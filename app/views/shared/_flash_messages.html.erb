@@ -2,7 +2,7 @@
   <div id="flash">
     <script>
       <% if flash[:success] %>
-        tostr.success("<%= flash[:success] %>")
+        toastr.success("<%= flash[:success] %>")
       <% end %>
       <% if flash[:info] %>
         toastr.success("<%= flash[:info] %>")
