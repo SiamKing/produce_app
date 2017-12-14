@@ -17,6 +17,10 @@ body {
   padding-bottom: 30px;
 }
 
+.shared-body {
+  margin-top: 50px;
+}
+
 h1 {
   font-family: 'Satisfy', cursive;
   font-size: 8rem !important;
@@ -37,6 +41,10 @@ a {
 a:hover {
   color: orange;
   text-decoration: none;
+}
+
+.navbar {
+  margin-bottom: 50px;
 }
 
 .container-fluid {
@@ -117,8 +125,6 @@ aside {
   }
 }
 
-
-
 .jumbo-title {
   font-size: 30px;
   color: green;
@@ -177,6 +183,10 @@ aside {
 }
 
 /* Produce show page */
+
+.produceBody {
+  margin-top: 50px;
+}
 
 .produce-row {
   height: 600px;
