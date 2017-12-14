@@ -6,8 +6,15 @@ body {
 }
 
 .welcome-page {
-  margin: 0 auto;
-  left: 25%;
+  margin: 0;
+  left: 50%;
   top: 50%;
   position: absolute;
+  transform: translate(-50%, -50%);
+}
+
+.welcome-title {
+  font-size: 4rem;
+  color: white;
+  text-align: center;
 }
