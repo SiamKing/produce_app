@@ -66,8 +66,8 @@ a:hover {
 }
 
 .btn-green {
-  background-color: #F9E074;
-  color: green;
+  background-color: #ff7f0f;
+  color: white;
   font-size: 2rem;
   padding: 10px;
   box-shadow: 5px 5px 5px grey;
@@ -79,7 +79,7 @@ a:hover {
 
 .btn-green:hover {
   color: green;
-  background-color: #F9F080;
+  background-color: #ffe500;
 }
 
 .btn-primary {
@@ -111,7 +111,7 @@ a:hover {
 }
 
 .navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
-    color: green;
+  color: green;
 }
 
 .sign-in {

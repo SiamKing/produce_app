@@ -18,7 +18,11 @@
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
           <div class="col-md-6 row-centered">
-            <%= link_to "Add Produce to Fridge", produce_index_path, class: 'btn btn-green btn-block' %>
+            <% if @user_produce %>
+              <%= link_to "Add Produce to Fridge", produce_index_path, class: 'btn btn-green btn-block' %>
+            <% else %>
+              <%= link_to "See What's in Your Fridge", user_produce_path(current_user), class: 'btn btn-green btn-block' %>
+            <% end %>
           </div>
           <div class="col-md-6 row-centered">
             <%= link_to "See Your Favorite Produce", user_user_produce_index_path(current_user), class: 'btn btn-green btn-block' %>

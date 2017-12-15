@@ -4,9 +4,9 @@ class UserProduceController < ApplicationController
 
   def show
     @user = current_user
-    produce = current_user.current_produce
-    @fruit = produce.sorted_fruit
-    @veggies = produce.sorted_veggies
+    @user_produce = current_user.current_produce
+    @fruit = @user_produce.sorted_fruit
+    @veggies = @user_produce.sorted_veggies
   end
 
   def create
