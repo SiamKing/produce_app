@@ -3,7 +3,7 @@
 @import "font-awesome";
 /*
 *= require main
-*= require_self
+*= require self
 *= require_tree .
 */
 
@@ -12,6 +12,9 @@
 //   text-shadow: 2px 2px white;
 // }
 body {
+  // background: none;
+  height:auto;
+  width: auto;
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding-bottom: 30px;
