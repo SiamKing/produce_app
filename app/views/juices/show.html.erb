@@ -1,118 +1,128 @@
-<div class="juice-show">
-  <%= render partial: 'shared/jumbotron', locals: {jumbo: 'jumbotron-juice', header: @juice.name} %>
-  <div class="container juice-produce">
-    <div class="row row-centered">
-      <h2 align="center">Ingredients</h2>
-      <div class="col-xs-8 col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 juice-produce">
-        <% @juice_produce.each do |juice_prod| %>
+<div class="juice-show-page">
+  <div class="juice-show">
+    <%= render partial: 'shared/jumbotron', locals: {jumbo: 'jumbotron-juice', header: @juice.name} %>
+    <div class="container juice-produce">
+      <div class="row row-centered">
+        <h2 align="center">Ingredients</h2>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-xs-offset-2 col-sm-offset-2 col-md-offset-2 juice-produce">
+          <% @juice_produce.each do |juice_prod| %>
           <div class="col-xs-4 col-sm-4 col-md-4 col-centered">
             <h3 align="center" class="produceQuantity"><%= juice_prod.quantity %> <%= juice_prod.produce.name %></h3>
             <div class="produce-index-img text-center">
               <%= link_to image_tag(juice_prod.produce.image.thumb.url), produce_path(juice_prod.produce) %>
             </div>
           </div>
-        <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="juice-links">
+      <div class="col-xs-6 col-md-6 col-md-offset-3">
+        <div class="col-xs-4">
+          <h4 align="left"><a class="editJuice" href="/juices/<%= @juice.id %>/edit">Edit Juice</a></h4>
+        </div>
+        <div class="col-xs-4">
+          <% if current_user.id == @juice.user_id %>
+          <h4 align="center"><a class="deleteJuice" rel="nofollow" data-method="delete" href="/juices/19">Delete Juice</a></h4>
+          <% end %>
+        </div>
+        <div class="col-xs-4">
+          <p align="right"><a class="userJuice" href="/users/<%= @juice.id %>/juices">Created by <%= @juice.user.name %></a></p>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="prev-next">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="col-md-4 col-md-offset-4" align="center">
+          <a href="#" class="js-previous" data-id="<%= @juice.id %>">Previous Juice</a>
+          ------ <a href="#" class="js-next" data-id="<%= @juice.id %>" last-id="<%= @last_juice_id %>">Next Juice</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="row juice-links">
-    <div class="col-xs-6 col-md-6 col-md-offset-3">
-      <div class="col-xs-4">
-        <h4 align="left"><a class="editJuice" href="/juices/<%= @juice.id %>/edit">Edit Juice</a></h4>
-      </div>
-      <div class="col-xs-4">
-        <% if current_user.id == @juice.user_id %>
-        <h4 align="center"><a class="deleteJuice" rel="nofollow" data-method="delete" href="/juices/19">Delete Juice</a></h4>
+  <div class="container comments">
+    <h2 align="center">Leave a Comment</h2>
+    <% @juice_comments.each do |comment| %>
+    <%= render partial: 'comments/comments', locals: {comment: comment} %>
+    <% end %>
+  </div>
+  <div class="container">
+    <div class="row js-commentForm">
+      <div class="col-sm-8 col-sm-offset-2">
+        <%= bootstrap_form_for(@comment, label_errors: true) do |f| %>
+        <ul class="error"></ul>
+        <%= f.hidden_field :juice_id, value: @juice.id %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <div class="col-sm-12">
+          <div class="col-sm-9">
+            <%= f.text_area :content, hide_label: true, placeholder: "Your Comment", class: "panel panel-white post panel-shadow comment-area" %>
+          </div>
+          <div class="col-sm-2">
+            <%= f.submit class: 'btn btn-default js-formSubmit' %>
+          </div>
+        </div>
         <% end %>
       </div>
-      <div class="col-xs-4">
-        <p align="right"><a class="userJuice" href="/users/<%= @juice.id %>/juices">Created by <%= @juice.user.name %></a></p>
-      </div>
-    </div>
-  </div>
-  <br>
-  <div class="row prev-next">
-    <div class="col-md-6 col-md-offset-3">
-      <div class="col-md-4 col-md-offset-4" align="center">
-        <a href="#" class="js-previous" data-id="<%= @juice.id %>">Previous Juice</a>
-        ------<a href="#" class="js-next" data-id="<%= @juice.id %>" last-id="<%= @last_juice_id %>">Next Juice</a>
-      </div>
-    </div>
-  </div>
-</div>
-<br /><br /><br />
-<div class="container comments">
-  <% @juice_comments.each do |comment| %>
-  <%= render partial: 'comments/comments', locals: {comment: comment} %>
-  <% end %>
-</div>
-<div class="container">
-  <div class="row js-commentForm">
-    <div class="col-sm-8 col-sm-offset-2">
-      <%= bootstrap_form_for(@comment, label_errors: true) do |f| %>
-      <ul class="error"></ul>
-      <%= f.hidden_field :juice_id, value: @juice.id %>
-      <%= f.hidden_field :user_id, value: current_user.id %>
-      <div class="col-sm-12">
-        <div class="col-sm-9">
-          <%= f.text_area :content, hide_label: true, placeholder: "Your Comment", class: "panel panel-white post panel-shadow comment-area" %>
-        </div>
-        <div class="col-sm-2">
-          <%= f.submit class: 'btn btn-default js-formSubmit' %>
-        </div>
-      </div>
-      <% end %>
     </div>
   </div>
 </div>
 
 <script id="juice-produce-template" type="text/x-handlebars-template">
-  <div class="juice-show">
-    <div class="jumbotron jumbotron-juice">
-      <div class="img"></div>
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-12">
-            <h1 class="jumbo-header" align="center">{{name}}</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-    <hr>
-    <div class="container juice-produce">
-      <div class="row row-centered">
-        <h2 align="center">Ingredients</h2>
-        <div class="col-xs-8 col-md-8 col-md-offset-2">
-          {{#each juiceProduce}}
-          <div class="col-xs-4 col-centered">
-            <h3 align="center" class="produceQuantity">{{quantity}} {{name}}</h3>
-            <div class="produce-index-img text-center">
-              <a href="/produce/{{id}}"><img src="{{image}}" alt="Thumb {{name}}" /></a>
+  <div class="juice-show-page">
+    <div class="juice-show">
+      <div class="jumbotron jumbotron-juice jumbo-juice">
+        <div class="img"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="jumbo-header" align="center">{{name}}</h1>
             </div>
           </div>
-          {{/each}}
+        </div>
+      </div>
+      <br><br />
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2"></div>
+      </div>
+      <hr class="hr-green hr-green-juice">
+      <div class="container juice-produce">
+        <div class="row row-centered">
+          <h2 align="center">Ingredients</h2>
+          <div class="col-xs-8 col-md-8 col-md-offset-2">
+            {{#each juiceProduce}}
+            <div class="col-xs-4 col-centered">
+              <h3 align="center" class="produceQuantity">{{quantity}} {{name}}</h3>
+              <div class="produce-index-img text-center">
+                <a href="/produce/{{id}}"><img src="{{image}}" alt="Thumb {{name}}" /></a>
+              </div>
+            </div>
+            {{/each}}
 
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row juice-links">
-      <div class="col-xs-6 col-md-6 col-md-offset-3">
-        <div class="col-xs-4">
-          <h4 align="left"><a class="editJuice" href="/juices/{{id}}/edit">Edit Juice</a></h4>
-        </div>
-        <div class="col-xs-4">
-        </div>
-        <div class="col-xs-4">
-          <p align="right"><a class="userJuice" href="/users/{{userId}}/juices">Created by {{userName}}</a></p>
+      <br>
+      <div class="juice-links">
+        <div class="col-xs-6 col-md-6 col-md-offset-3">
+          <div class="col-xs-4">
+            <h4 align="left"><a class="editJuice" href="/juices/{{id}}/edit">Edit Juice</a></h4>
+          </div>
+          <div class="col-xs-4">
+          </div>
+          <div class="col-xs-4">
+            <p align="right"><a class="userJuice" href="/users/{{userId}}/juices">Created by {{userName}}</a></p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row prev-next">
-      <div class="col-md-6 col-md-offset-3">
-        <div class="col-md-4 col-md-offset-4" align="center">
-          <a href="#" class="js-previous" data-id="{{id}}">Previous Juice</a>
-          ------<a href="#" class="js-next" data-id="{{id}}" last-id="<%= @last_juice_id %>">Next Juice</a>
+      <div class="prev-next">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="col-md-4 col-md-offset-4" align="center">
+            <a href="#" class="js-previous" data-id="{{id}}">Previous Juice</a>
+            ------ <a href="#" class="js-next" data-id="{{id}}" last-id="<%= @last_juice_id %>">Next Juice</a>
+          </div>
         </div>
       </div>
     </div>
@@ -120,27 +130,31 @@
 </script>
 
 <script id="comment-template" type="text/x-handlebars-template">
-  <div class="row">
-    <div class="col-sm-8 col-sm-offset-2">
-      <div class="panel panel-white post panel-shadow">
-        <div class="post-heading">
-          <div class="pull-left image">
-            <img src="http://www.gravatar.com/avatar/{{email}}" class="img-circle avatar" alt="Gravatar">
-          </div>
-          <div class="pull-left meta">
-            <div class="title h5">
-              <a href="/users.{{userId}}"> {{userName}}  commented on</a>
+  <!-- <div class="container comments">
+    <h2 align="center">Leave a Comment</h2>
+  </div> -->
+
+    <div class="row">
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="panel panel-white post panel-shadow">
+          <div class="post-heading">
+            <div class="pull-left image">
+              <img src="http://www.gravatar.com/avatar/{{email}}" class="img-circle avatar" alt="Gravatar">
             </div>
-            <h6 class="text-muted time">{{formattedDate}}</h6>
+            <div class="pull-left meta">
+              <div class="title h5">
+                <a href="/users.{{userId}}"> {{userName}}  commented on</a>
+              </div>
+              <h6 class="text-muted time">{{formattedDate}}</h6>
+            </div>
           </div>
-        </div>
-        <br>
-        <div class="post-description">
-          <p>{{commentContent}}</p>
+          <br>
+          <div class="post-description">
+            <p>{{commentContent}}</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
 </script>
 

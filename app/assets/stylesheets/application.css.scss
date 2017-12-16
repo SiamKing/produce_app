@@ -7,14 +7,7 @@
 *= require_tree .
 */
 
-/* Some Style from the Bootstrap Default Theme */
-// h1 {
-//   text-shadow: 2px 2px white;
-// }
 body {
-  // background: none;
-  height:auto;
-  width: auto;
   font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding-bottom: 30px;
@@ -101,11 +94,11 @@ a:hover {
 }
 
 .navbar-header {
-  max-width: 50%;
+  max-width: 200px;
 }
 
 .navbar-brand > img {
-  width: 34%;
+  width: 80%;
 }
 
 .navbar-nav > li > a {
@@ -263,8 +256,16 @@ aside {
   z-index:1;
 }
 
+.jumbo-juice {
+  height: 255px;
+}
+
 .juice {
   height: 200px;
+}
+
+.hr-green-juice {
+  margin-top: -72px;
 }
 /* Produce show page */
 
@@ -379,6 +380,10 @@ aside {
  }
 
 /* COMMENTS BOX */
+
+.comments {
+  margin-top: 80px;
+}
 
  .panel-shadow {
      box-shadow: rgba(0, 0, 0, 0.3) 7px 7px 7px;

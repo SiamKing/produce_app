@@ -16,12 +16,12 @@ function Juice(attr) {
 }
 
 Juice.format  = function(juice) {
-  $('.juice-show').html('');
+  $('.juice-show-page').empty();
   Juice.templateSource = $("#juice-produce-template").html();
   Juice.template = Handlebars.compile(Juice.templateSource);
   var juices = new Juice(juice);
   var juicesHTML = juices.renderHTML();
-  $('.juice-show').html(juicesHTML);
+  $('.juice-show-page').html(juicesHTML);
 }
 
 Juice.prototype.renderHTML = function() {

@@ -7,30 +7,24 @@
       </div>
     </div>
     <br> <br/>
-    <% if !current_user %>
-      <div class="col-md-6 col-md-offset-3 jumbo-title">
-        <div><%= title %></div>
-        <div><%= description %></div>
-      </div>
-    <% end %>
 
-    <% if current_user %>
+    <% if current_user && !@juices %>
       <div class="row">
         <div class="col-md-8 col-md-offset-2">
-          <% if @user_produce && !@juices %>
+          <% if @user_produce %>
             <div class="col-md-6 row-centered">
               <%= link_to "Add Produce to Fridge", produce_index_path, class: 'btn btn-green btn-block' %>
             </div>
             <div class="col-md-6 row-centered">
               <%= link_to "See Your Favorite Produce", user_user_produce_index_path(current_user), class: 'btn btn-green btn-block' %>
             </div>
-          <% elsif @produce && !@juices %>
+          <% elsif @produce %>
             <div class="col-md-6 row-centered">
               <%= link_to "See What's in Your Fridge", user_produce_path(current_user), class: 'btn btn-green btn-block' %>
             </div>
             <div class="col-md-6 row-centered">
               <%= link_to "See Your Favorite Produce", user_user_produce_index_path(current_user), class: 'btn btn-green btn-block' %>
-            </div>    
+            </div>
           <% end %>
           </div>
         </div>
