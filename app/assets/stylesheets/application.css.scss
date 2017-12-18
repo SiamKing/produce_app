@@ -1,10 +1,9 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-social";
 @import "font-awesome";
 /*
 *= require main
-*= require self
-*= require_tree .
 */
 
 body {
@@ -93,12 +92,8 @@ a:hover {
   background: transparent;
 }
 
-.navbar-header {
-  max-width: 200px;
-}
-
 .navbar-brand > img {
-  width: 80%;
+  height: 26px;
 }
 
 .navbar-nav > li > a {
@@ -108,6 +103,10 @@ a:hover {
 
 .navbar .navbar-nav > li > a:hover, .navbar .navbar-nav > li > a:focus {
   color: green;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: #fff;
 }
 
 .sign-in {

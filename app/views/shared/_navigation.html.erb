@@ -1,10 +1,10 @@
 <% if current_user.nil? %>
-  <li><%= link_to "Sign Up", new_user_registration_path %></li>
-  <li><%= link_to "Sign In", new_user_session_path %></li>
+  <li class="nav-item"><%= link_to "Sign Up", new_user_registration_path, class: 'nav-link' %></li>
+  <li class="nav-item"><%= link_to "Sign In", new_user_session_path, class: 'nav-link' %></li>
 <% else %>
-  <li><%= link_to "Fridge", user_produce_path(current_user) %></li>
-  <li><%= link_to "Produce", produce_index_path %></li>
-  <li><%= link_to "Juices", juices_path %></li>
-  <li><%= link_to "#{current_user.name}", user_path(current_user) %></li>
-  <li><a data-method="delete" href="/users/sign_out" rel="nofollow">Sign Out</a></li>
+  <li class="nav-item"><%= link_to "Fridge", user_produce_path(current_user), class: 'nav-link' %></li>
+  <li class="nav-item"><%= link_to "Produce", produce_index_path, class: 'nav-link' %></li>
+  <li class="nav-item"><%= link_to "Juices", juices_path, class: 'nav-link' %></li>
+  <li class="nav-item"><%= link_to "#{current_user.name}", user_path(current_user), class: 'nav-link' %></li>
+  <li class="nav-item"><a class='nav-link' data-method="delete" href="/users/sign_out" rel="nofollow">Sign Out</a></li>
 <% end %>
