@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   resources :user_produce, :produce, :juice_produce, :juices, :comments
   devise_for :users, :controllers => { registrations: 'registrations', :omniauth_callbacks => "users/omniauth_callbacks" }
   get '/auth/facebook/callback' => 'sessions#create'
-  
+  get '/privacy-policy' => 'privacy_policy#privacy_policy'
+
   resources :users do
     resources :juices, only: [:index, :new]
   end
