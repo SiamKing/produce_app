@@ -1,6 +1,7 @@
 class PrivacyPolicyController < ApplicationController
   layout "site"
-    def privacy_policy
-    end
+
+  def privacy_policy
+  end
 
 end
