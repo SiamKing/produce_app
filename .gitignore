@@ -24,4 +24,4 @@
 /config/application.yml
 
 /config/secrets.yml
-app/config/secrets.yml
+/config/secrets1.yml
