@@ -1,34 +1,20 @@
 <%= render partial: 'shared/jumbotron', locals: { jumbo: 'jumbotron-user', header: "#{current_user.name}'s profile" }%>
-<div class="row">
-  <aside class="col-md-4 col-md-offset-1">
-    <section class ="user_info">
-      <h1>
-        <%= gravatar_for current_user %>
-        <%= current_user.name %><br>
-        <%= current_user.email %>
-      </h1>
-      <%= link_to "Edit", edit(current_user) %>
-    </section>
-  </aside>
-  <div class="col-md-2">
-    <button id="js-juice" class="<%= 'btn btn-default' %>" data-id="<%= current_user.id %>">Your Juices</button>
-    <ul class="user-juices">
+<div class="container">
+  <div class="row">
+    <aside class="col-md-4 col-md-offset-1">
+      <section class ="user_info">
+        <h3>
+          <%= gravatar_for current_user %>
+          <%= current_user.name %><br>
+          <%= current_user.email %>
+        </h3>
+        <%= link_to "Edit", edit(current_user) %>
+      </section>
+    </aside>
 
-    </ul>
-  </div>
-  <div class="col-md-4 col-md-offset-1">
-    <h3>What would you like to do?</h3>
-    <div class="col-sm-4 col-sm-offset-3">
-      <ul id="sidebar" class="nav nav-stacked affix">
-        <li><%= link_to "See your Fridge", user_produce_path(current_user), class: 'btn btn-default' %></li>
-        <li><%= link_to "See your Faves", user_user_produce_index_path(current_user), class: 'btn btn-default' %></li>
-        <li><%= link_to "See all Produce", produce_index_path, class: 'btn btn-default' %></li>
-        <li><%= link_to "See all Juices", juices_path, class: 'btn btn-default' %></li>
-        <li><%= link_to "Juices you created", user_juices_path(current_user), class: 'btn btn-default' %></li>
-      </ul>
-    </div>
   </div>
 </div>
+
 
 <script type="text/javascript">
   $(function() {
