@@ -1,0 +1,24 @@
+/* line 1, /Users/TJ/Development/Rails/produce_app/app/assets/stylesheets/welcome.css.scss */
+#site {
+  background: url(/assets/welcome_image-489ccf5237a4bd93c314289d9ab461cc4e6d79e87a6632f6151764749296655a.jpg) no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+}
+
+/* line 8, /Users/TJ/Development/Rails/produce_app/app/assets/stylesheets/welcome.css.scss */
+.welcome-page {
+  margin: 0;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+/* line 16, /Users/TJ/Development/Rails/produce_app/app/assets/stylesheets/welcome.css.scss */
+.welcome-title {
+  font-size: 4rem;
+  color: white;
+  text-align: center;
+}
