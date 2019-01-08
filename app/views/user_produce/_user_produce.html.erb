@@ -1,13 +1,11 @@
 <% produce.each do |prod| %>
-<div clas="row">
-  <div class="col-md-6 text-center produce-card">
+  <div class="col-md-6 text-center produce-card" id="prod-<%= prod.id %>">
     <h3 align='center'><%= prod.produce.name %></h3>
     <div class="produce-img">
       <%= link_to image_tag(prod.produce.image.thumb.url), produce_path(prod.produce) %>
     </div><br>
     <%= expires(prod) %>
     <br></br>
-    <%= button_to ate_or_throw_out(prod), eaten_path(prod), class: 'btn btn-default' %>
+    <%= button_to ate_or_throw_out(prod), user_produce_path(prod), method: "patch", class: 'btn btn-default eaten', remote: true %>
   </div>
-</div>
 <% end %>
