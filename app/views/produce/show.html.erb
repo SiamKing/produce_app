@@ -8,10 +8,7 @@
       <h4 class="produceContent"><%= @produce.content %></h4>
       <h4 id="expiresIn">Shelf life is usually about <%= @produce.expires_in %> days.</h4>
       <br></br>
-      <form class="addFridge" action="/user_produce.<%= @produce.id %>" method="post">
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <input class="btn btn-default btn-block" type="submit" value="Add to fridge"/>
-      </form>
+      <%= link_to "Add to Fridge", user_produce_path(@produce), method: 'post', class: "btn btn-default btn-block", remote: true %>
       <%= link_to "Edit Produce Item", edit_produce_path(@produce), class: "btn btn-default btn-block" %>
       <%= link_to "Juices with #{@produce.name}", produce_juices_path(@produce), class: "btn btn-default btn-block" %>
     </div>
@@ -39,7 +36,7 @@
         <h4 class="produceContent">{{content}}</h4>
         <h4 id="expiresIn">Shelf life is usually about {{shelfLife}} days.</h4>
         <br></br>
-        <form action="/user_produce.{{id}}" method="post">
+        <form action="/user_produce/{{id}}" method="post" data-remote="true">
           <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
           <input class="btn btn-default btn-block" type="submit" value="Add to fridge"/>
         </form>
