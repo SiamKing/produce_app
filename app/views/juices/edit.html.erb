@@ -1,4 +1,4 @@
-<div class="col-md-4 col-md-offset-4">
+<div class="col-md-6 col-md-offset-3">
   <h1 align="center">Edit Juice</h1>
   <%= bootstrap_form_for @juice do |f| %>
     <h3><%= f.text_field :name %></h3>
@@ -10,7 +10,7 @@
         <%= f.fields_for :produce, @juice.produce.build do |prod_builder| %>
           <%= prod_builder.select 'name', options_from_collection_for_select(@juice.produce, 'id', 'name', @juice.produce_ids[counter]), include_blank: true %>
           <%= prod_builder.fields_for :juice_produce, @juice.juice_produce.build do |jp_builder| %>
-            <%= jp_builder.number_field :quantity, min: 1 %>
+            <%= jp_builder.number_field :quantity, min: 1, placeholder: "Quantity" %>
           <% end %>
         <% end %>
       </div>
@@ -22,14 +22,15 @@
       <% 4.times do %>
         <div class="col-xs-3">
           <%= f.fields_for :produce, @juice.produce.build do |prod_form| %>
-            <%= prod_form.text_field :name %>
+            <%= prod_form.text_field :name, placeholder: "Produce" %>
             <%= prod_form.fields_for :juice_produce, @juice.juice_produce.build do |jp_form| %>
-              <%= jp_form.number_field :quantity %>
+              <%= jp_form.number_field :quantity, placeholder: "Quantity" %>
             <% end %>
           <% end %>
         </div>
       <% end %>
     </div>
+    <br>
     <%= f.submit %>
   </div>
   <% end %>
