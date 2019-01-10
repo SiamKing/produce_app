@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   get 'users/:id/produce/index' => 'produce#index', as: :user_user_produce_index
   get '/welcome' => 'application#welcome'
+  get '/demo' => 'application#demo'
   get '*path' => redirect('/')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
